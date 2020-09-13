@@ -1,19 +1,35 @@
 {
     "manifest_version": 2,
-    "name": "我的时钟",
-    "version": "1.0",
-    "description": "我的第一个Chrome扩展",
+    "name": "ALF外贸运营助手",
+    "version": "0.0.0.1",
+    "description": "专注外贸运营工具开发",
     "icons": {
-        "16": "images/icon16.png",
-        "48": "images/icon48.png",
-        "128": "images/icon128.png"
+        "16": "images/github.png",
+        "48": "images/github.png",
+        "128": "images/github.png"
     },
     "browser_action": {
         "default_icon": {
-            "19": "images/icon19.png",
-            "38": "images/icon38.png"
+            "19": "images/github.png",
+            "38": "images/github.png"
         },
-        "default_title": "我的时钟",
+        "default_title": "ALF外贸运营助手",
         "default_popup": "popup.html"
-    }
+    },
+    "background": {
+        "scripts": ["js/jquery-3.5.1.min.js", "js/background.js"],
+        "persistent": false
+    },
+    "permissions": [
+        "*://*.alibaba.com/*",
+        "tabs",
+        "declarativeContent"
+    ],
+    "content_scripts": [
+        {
+            "matches": ["*://*.alibaba.com/*"],
+            "js": ["js/jquery-3.5.1.min.js", "js/my_catch.js"],
+            "run_at": "document_start"
+        }
+    ]
 }
