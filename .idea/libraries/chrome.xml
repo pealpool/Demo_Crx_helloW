@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="chrome" type="javaScript">
+    <CLASSES />
+    <DOCUMENTATION>
+      <root url="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/chrome" />
+    </DOCUMENTATION>
+    <SOURCES />
+  </library>
+</component>
