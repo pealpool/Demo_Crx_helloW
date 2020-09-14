@@ -22,12 +22,18 @@
     },
     "permissions": [
         "*://*.alibaba.com/*",
+        "http://*/*",
+        "https://*/*",
         "tabs",
         "declarativeContent"
     ],
     "content_scripts": [
         {
-            "matches": ["*://*.alibaba.com/*"],
+            "matches": [
+                "*://*.alibaba.com/*",
+                "http://*/*",
+                "https://*/*"
+            ],
             "js": ["js/jquery-3.5.1.min.js", "js/my_catch.js"],
             "run_at": "document_start"
         }

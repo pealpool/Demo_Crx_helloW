@@ -1,13 +1,37 @@
-function popup(el){
-    let today=new Date();
-    let h=today.getHours();
-    let m=today.getMinutes();
-    let s=today.getSeconds();
-    m=m>=10?m:('0'+m);
-    s=s>=10?s:('0'+s);
-    el.innerHTML = h+":"+m+":"+s;
-    setTimeout(function(){popup(el)}, 1000);
+function sendMessageToContentScript(message, callback) {
+    getCurrentTabId((tabId) => {
+        chrome.tabs.sendMessage(tabId, message, function (response) {
+            if (callback) callback(response);
+        });
+    });
 }
 
-let clock_div = document.getElementById('clock_div');
-popup(clock_div);
+function getCurrentTabId(callback) {
+    chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+        if (callback) callback(tabs.length ? tabs[0].id : null);
+    });
+}
+
+
+let companyName = $('#in1').val();
+
+$('a').click(() => {
+    googoo();
+
+});
+
+function googoo() {
+    sendMessageToContentScript(companyName, (response) => {
+
+        // alert('收到来自content-script的回复：'+response)
+        //
+        // let i;
+        // for (i = 0; i < response.length; i++) {
+        //     $('#ddd').append('<div>' + response[i] + '</div>');
+        // }
+        // i++;
+        $('#ddd').append('<a>' + response + '</a>');
+        // $('a').text(response);
+
+    });
+}
