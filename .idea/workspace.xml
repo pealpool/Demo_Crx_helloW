@@ -55,9 +55,9 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../chrome-plugin-demo-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../chrome-plugin-demo-master/full-chrome-plugin-demo" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -78,6 +78,7 @@
       <workItem from="1600001179065" duration="7723000" />
       <workItem from="1600090255162" duration="28000" />
       <workItem from="1600090289610" duration="13321000" />
+      <workItem from="1600135076359" duration="17532000" />
     </task>
     <servers />
   </component>
@@ -112,15 +113,17 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="2332" y="552" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3440.1400@0.0.3440.1400" timestamp="1600091485039" />
-    <state x="1326" y="369" key="FileChooserDialogImpl" timestamp="1600096342224">
-      <screen x="0" y="0" width="3440" height="1400" />
+    <state x="1326" y="372" key="FileChooserDialogImpl" timestamp="1600137994259">
+      <screen x="0" y="0" width="3440" height="1410" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1599992806153" />
     <state x="1326" y="369" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1600096342224" />
-    <state x="2027" y="538" key="SettingsEditor" timestamp="1600092349683">
-      <screen x="0" y="0" width="3440" height="1400" />
+    <state x="1326" y="372" key="FileChooserDialogImpl/0.0.3440.1410@0.0.3440.1410" timestamp="1600137994259" />
+    <state x="2027" y="542" key="SettingsEditor" timestamp="1600135153533">
+      <screen x="0" y="0" width="3440" height="1410" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1599993137763" />
     <state x="2027" y="538" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1600092349683" />
+    <state x="2027" y="542" key="SettingsEditor/0.0.3440.1410@0.0.3440.1410" timestamp="1600135153533" />
   </component>
 </project>
