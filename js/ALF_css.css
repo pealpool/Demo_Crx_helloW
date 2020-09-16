@@ -1,28 +1,82 @@
+*::-webkit-scrollbar {
+    width: 8px;
+}
+*::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.2);
+}
+*::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: rgba(0,0,0,0.1);
+
+}
+
+
+
+
+
 body {
     margin: 0;
-    padding: 10px;
-    width: 430px;
+    width: 401px;
     height: 500px;
 }
 
+#topBox{
+    background-color: #8A1480;
+    width: auto;
+    height: 40px;
+}
+#logo{
+    float: right;
+    margin-top: 5px;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    background-image: url("../images/github_W.png");
+    background-size: cover;
+}
+#logoName{
+    float: right;
+    font-size: 16px;
+    /*font-weight: bold;*/
+    color:#fff;
+    height: 40px;
+    margin-right: 5px;
+    line-height: 44px;
+}
 #bigBox{
     float: left;
-    width: 410px;
-    margin-bottom: 6px;
+    width: 401px;
+}
+.vLine{
+    float: left;
+    width: 1px;
+    height: 400px;
+    background-color: #ccc;
 }
 
 #myKeyWord {
     float: left;
     width: 200px;
     height: 400px;
+    padding: 10px;
     resize: none;
+    border: none;
+}
+
+#myResult{
+    float: left;
+    width: 200px;
+    height: 400px;
 }
 
 #searchButton{
     float: left;
-    width: 60px;
-    height: 20px;
-    line-height: 20px;
+    width: 401px;
+    height: 60px;
+    line-height: 60px;
     cursor: pointer;
     background-color: #8A1480;
     color:#fff;
