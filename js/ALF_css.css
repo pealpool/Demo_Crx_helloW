@@ -1,5 +1,6 @@
 *::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
 }
 *::-webkit-scrollbar-thumb {
     border-radius: 8px;
@@ -12,43 +13,61 @@
     background: rgba(0,0,0,0.1);
 
 }
-
-
-
+*::selection {
+    background-color: #3ebae3;
+}
 
 
 body {
     margin: 0;
     width: 401px;
     height: 500px;
+    font-family: "微软雅黑";
 }
 
 #topBox{
-    background-color: #8A1480;
+    background-color: #007097;
     width: auto;
     height: 40px;
+    overflow:hidden;
+    user-select:none;
 }
 #logo{
     float: right;
-    margin-top: 5px;
+    margin-top: -35px;
     margin-right: 10px;
     width: 30px;
     height: 30px;
     background-image: url("../images/github_W.png");
     background-size: cover;
 }
-#logoName{
+#logoName_T{
     float: right;
     font-size: 16px;
     /*font-weight: bold;*/
     color:#fff;
     height: 40px;
-    margin-right: 5px;
-    line-height: 44px;
+    margin-right: 45px;
+    margin-top: -26px;
+    cursor: default;
+}
+#logoName_B{
+    float: left;
+    text-align: left;
+    font-size: 66px;
+    font-weight: bold;
+    color:#1e82a5;
+    width: 1000px;
+    height: 40px;
+    margin-left: 80px;
+    line-height: 40px;
+    cursor: default;
+    overflow:hidden;
 }
 #bigBox{
     float: left;
     width: 401px;
+    background-color: #f5f5f5;
 }
 .vLine{
     float: left;
@@ -58,31 +77,68 @@ body {
 }
 
 #myKeyWord {
+    box-sizing: border-box;
     float: left;
-    width: 200px;
+    width: 204px;
     height: 400px;
     padding: 10px;
     resize: none;
     border: none;
+    background-color: #f5f5f5;
 }
-
+#myKeyWord:hover{
+    background-color: #fff;
+}
 #myResult{
+    box-sizing: border-box;
     float: left;
-    width: 200px;
+    width: 196px;
     height: 400px;
+    padding: 10px;
+    overflow:auto;
 }
-
+#myResult:hover{
+    background-color: #fff;
+}
 #searchButton{
     float: left;
     width: 401px;
     height: 60px;
     line-height: 60px;
     cursor: pointer;
-    background-color: #8A1480;
+    background-color: #007097;
     color:#fff;
-    font-size: 12px;
+    font-size: 66px;
     text-align: center;
+    overflow:hidden;
+    user-select:none;
 }
 #searchButton:hover{
-    background-color: #e259d1;
+    background-color: #3ebae3;
+}
+#searchButton:active{
+    background-color: #007097;
+}
+.font_T{
+    width: 401px;
+    height: 60px;
+    margin-top: -60px;
+    line-height: 60px;
+    color:#fff;
+    font-size: 16px;
+    text-align: center;
+}
+.font_B{
+    width: 401px;
+    height: 60px;
+    font-size: 100px;
+    font-weight: bold;
+    text-align: center;
+    overflow:hidden;
+    color: #1e82a5;
+}
+
+.smallFont{
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
 }
