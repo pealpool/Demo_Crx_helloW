@@ -52,7 +52,7 @@ $('#myKeyWord').change(function () {
     chrome.storage.local.set({word_text: v_after});
 });
 
-$('a').click(function () {
+$('#searchButton').click(function () {
     // chrome.runtime.sendMessage({'doKey': 'getText'}, function (response) {
     //     $('#ddd').append('<div>提取：' + response + '</div>');
     // });
@@ -68,23 +68,20 @@ $('a').click(function () {
     st = st.replace(/\n*$/, "");
     keyWordArray = st.split("\n");
 
-
-    chrome.runtime.sendMessage({doKey: 'searchBegin', kWa: keyWordArray}, function (response) {
+    chrome.runtime.sendMessage({doKey: 'searchBegin', kWc: keyWordArray}, function (response) {
         $('#myDiv').append('<div>' + response + '</div>');
     });
 
-
-    function sendMessageToContentScript(message, callback) {
-        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-            chrome.tabs.sendMessage(tabs[0].id, message, function (response) {
-                if (callback) callback(response);
-            });
-        });
-    }
-
-    sendMessageToContentScript({doKey: 'keyWordArray', keyContent: keyWordArray}, function (response) {
+    sendMessageToContentScript({doKey: 'searchBegin', kWc: keyWordArray}, function (response) {
         $('#myDiv').append('<div>' + response + '</div>');
     });
-
 
 });
+
+function sendMessageToContentScript(message, callback) {
+    chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, message, function (response) {
+            if (callback) callback(response);
+        });
+    });
+}

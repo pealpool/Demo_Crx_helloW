@@ -40,11 +40,29 @@
 //             break;
 //     }
 // });
+let keyWordArray = new Array();
+
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-    if (request.doKey == 'keyWordArray') {
-        $('#queryString').val(request.keyContent[0]);
-        sendResponse(request.keyContent[0]);
-        $('div.search-main button.ui-button.ui-button-primary.ui-button-large').eq(0).trigger("click");
+    switch (request.doKey) {
+        case "searchBegin":
+            keyWordArray = $.extend(true, [], request.kWc);
+            sendResponse('cs收数组:'+ keyWordArray.length);
+            break;
+        case "addNewSearch":
+            $('#queryString').val(keyWordArray[request.keyContent]);
+            $('div.search-main button.ui-button.ui-button-primary.ui-button-large').eq(0).trigger("click");
+            break;
+        case "searchCheck":
+            catchContent(request.keyContent);
+            break;
     }
 });
+
+let textBox = '';
+function catchContent(search_i) {
+    textBox = $('#queryString').val();
+    if(textBox == keyWordArray[search_i]){
+
+    }
+}
