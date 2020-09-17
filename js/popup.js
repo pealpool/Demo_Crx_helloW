@@ -61,6 +61,7 @@ $('#searchButton').click(function () {
     //     $('#ddd').append('<div>提取：' + items.word_text + '</div>');
     // });
 
+
     let keyWordArray = new Array();
     let st = $('#myKeyWord').val();
     st = st.replace(/^\n*/, "");
@@ -69,11 +70,11 @@ $('#searchButton').click(function () {
     keyWordArray = st.split("\n");
 
     chrome.runtime.sendMessage({doKey: 'searchBegin', kWc: keyWordArray}, function (response) {
-        $('#myDiv').append('<div>' + response + '</div>');
+        timedMsg(response);
     });
 
     sendMessageToContentScript({doKey: 'searchBegin', kWc: keyWordArray}, function (response) {
-        $('#myDiv').append('<div>' + response + '</div>');
+        timedMsg(response);
     });
 
 });
@@ -85,3 +86,33 @@ function sendMessageToContentScript(message, callback) {
         });
     });
 }
+
+$('#myResultBox').hover(function () {
+    $('#myConsoleBox').css('opacity', 0.1);
+}, function () {
+    $('#myConsoleBox').css('opacity', 1);
+});
+
+
+function timedMsg(mytext) {
+    let $myDivRemove = $('<div class="myConsole"><span>' + mytext + '</span></div>');
+    $('#myConsoleBox').prepend($myDivRemove);
+    let t = setTimeout(function () {
+        $myDivRemove.hide('fade', 1000, function () {
+            $myDivRemove.remove();
+        });
+    }, 10000);
+}
+
+$('#logoName_T .smallFont').click(function () {
+    timedMsg('检查是否有更新可用...');
+    let t1 = setTimeout(function () {
+        timedMsg('试用版：不能自动升级。');
+        let t2 = setTimeout(function () {
+            timedMsg('获取更多功能或bug修复，');
+            let t3 = setTimeout(function () {
+                timedMsg('请联系本地服务商。');
+            }, 2000);
+        }, 2000);
+    }, 2000);
+})
