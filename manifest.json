@@ -1,19 +1,19 @@
 {
     "manifest_version": 2,
-    "name": "ALF外贸运营助手",
+    "name": "THE ONE 外贸运营助手",
     "version": "0.0.0.1",
     "description": "专注外贸运营工具开发",
     "icons": {
-        "16": "images/github.png",
-        "48": "images/github.png",
-        "128": "images/github.png"
+        "16": "images/logoTO.png",
+        "48": "images/logoTO.png",
+        "128": "images/logoTO.png"
     },
     "browser_action": {
         "default_icon": {
-            "19": "images/github.png",
-            "38": "images/github.png"
+            "19": "images/logoTO.png",
+            "38": "images/logoTO.png"
         },
-        "default_title": "ALF外贸运营助手",
+        "default_title": "THE ONE 外贸运营助手",
         "default_popup": "popup.html"
     },
     "background": {

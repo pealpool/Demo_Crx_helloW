@@ -14,7 +14,7 @@
 
 }
 *::selection {
-    background-color: #3ebae3;
+    background-color: #3987d0;
 }
 
 
@@ -26,7 +26,7 @@ body {
 }
 
 #topBox{
-    background-color: #007097;
+    background-color: #174C81;
     width: auto;
     height: 40px;
     overflow:hidden;
@@ -38,7 +38,7 @@ body {
     margin-right: 10px;
     width: 30px;
     height: 30px;
-    background-image: url("../images/github_W.png");
+    background-image: url("../images/logoTO_W.png");
     background-size: cover;
 }
 #logoName_T{
@@ -56,7 +56,7 @@ body {
     text-align: left;
     font-size: 66px;
     font-weight: bold;
-    color:#1e82a5;
+    color:#1f568d;
     width: 1000px;
     height: 40px;
     margin-left: 80px;
@@ -106,7 +106,7 @@ body {
     height: 60px;
     line-height: 60px;
     cursor: pointer;
-    background-color: #007097;
+    background-color: #174C81;
     color:#fff;
     font-size: 66px;
     text-align: center;
@@ -114,10 +114,10 @@ body {
     user-select:none;
 }
 #searchButton:hover{
-    background-color: #3ebae3;
+    background-color: #3987d0;
 }
 #searchButton:active{
-    background-color: #007097;
+    background-color: #174C81;
 }
 .font_T{
     width: 401px;
@@ -135,7 +135,7 @@ body {
     font-weight: bold;
     text-align: center;
     overflow:hidden;
-    color: #1e82a5;
+    color: #1f568d;
 }
 
 .smallFont{
