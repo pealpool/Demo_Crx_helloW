@@ -11,13 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85be8931-1b77-4330-97e7-038c23f64116" name="默认的" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Demo_Crx_helloW.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/chrome.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/ALF_css.css" beforeDir="false" afterPath="$PROJECT_DIR$/js/ALF_css.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +82,8 @@
       <workItem from="1600318964512" duration="1416000" />
       <workItem from="1600345928045" duration="11404000" />
       <workItem from="1600412183106" duration="10606000" />
+      <workItem from="1600436665068" duration="119000" />
+      <workItem from="1600436798904" duration="1467000" />
     </task>
     <servers />
   </component>
@@ -109,9 +106,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1312" y="341" key="#Plugins" timestamp="1600090335658">
-      <screen x="0" y="0" width="3440" height="1400" />
+    <state x="732" y="253" key="#Plugins" timestamp="1600436784636">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="732" y="253" key="#Plugins/0.0.1920.1040@0.0.1920.1040" timestamp="1600436784636" />
     <state x="1312" y="341" key="#Plugins/0.0.3440.1400@0.0.3440.1400" timestamp="1600090335658" />
     <state x="690" y="299" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper" timestamp="1599992806920">
       <screen x="0" y="0" width="1920" height="1040" />
