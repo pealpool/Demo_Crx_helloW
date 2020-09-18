@@ -22,8 +22,11 @@
 // });
 
 let keyWordArray = new Array();
+let catchWordArray = new Array();
+catchWordArray[0] = [];
 let timerSearch;
 let search_i = 0;
+let reKeyWord = '';
 
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     // if (message.doKey == 'keyWordChange') {
@@ -35,12 +38,19 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     switch (message.doKey) {
         case "searchBegin":
             keyWordArray = $.extend(true, [], message.kWc);
-            sendResponse('bg收数组:'+ keyWordArray.length);
-            sendResponse('开始查询...');
+            sendResponse('bg收数组:' + keyWordArray.length);
             search_i = 0;
             addNewKeyWord();
             beginActiveSearch();
             break;
+        case "catch":
+            if (reKeyWord == keyWordArray[search_i]) {
+                catchWordArray[search_i, 0] = reKeyWord;
+                catchWordArray[search_i, 1] = message.keyRanking;
+                catchWordArray[search_i, 2] = message.keyWhich;
+                chrome.runtime.sendMessage({doKey: 'bTp_catchData', catchWA: catchWordArray});
+                sendResponse('bg_gotData');
+            }
     }
 });
 
@@ -52,21 +62,22 @@ function sendMessageToContentScript(message, callback) {
     });
 }
 
-
-function beginActiveSearch(){
-    timerSearch = setInterval(function(){
+//todo tab刷新以后,id不同引起错误？
+function beginActiveSearch() {
+    timerSearch = setInterval(function () {
         sendMessageToContentScript({doKey: 'searchCheck', keyContent: search_i}, function (response) {
-            switch (response.doKey) {
+            switch (response) {
                 case "finish":
                     clearInterval(timerSearch);
                     break;
-                case "goOn":
-                    search_i = response.keyContent;
             }
         });
-    }, 500)
+    }, 2000)
 }
 
-function addNewKeyWord(){
-    sendMessageToContentScript({doKey: 'addNewSearch', keyContent: search_i}, function (response) {});
+
+function addNewKeyWord() {
+    sendMessageToContentScript({doKey: 'addNewSearch', keyContent: search_i}, function (response) {
+        reKeyWord = response;
+    });
 }

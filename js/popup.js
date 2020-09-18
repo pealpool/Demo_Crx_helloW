@@ -42,6 +42,11 @@
 //     $('#ddd').append('<div>' + response + '</div>');
 // });
 
+
+let catchWordArray = new Array();
+catchWordArray[0] = [];
+
+
 chrome.storage.local.get({word_text: '无数据'}, function (items) {
     $('#myKeyWord').val(items.word_text);
 });
@@ -116,3 +121,18 @@ $('#logoName_T .smallFont').click(function () {
         }, 2000);
     }, 2000);
 })
+
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    switch (request.doKey) {
+        case "bTp_catchData":
+            timedMsg('收到bg数据');
+            catchWordArray = $.extend(true, [], request.catchWA);
+            $('.myResult').remove();
+            let i = 0;
+            while ((catchWordArray[i,0]!='') && (i <= catchWordArray.length)){
+                $('#myResultBox').prepend('<div class="myResult">' + catchWordArray[i,0] + '&#9;'+ catchWordArray[i,1] + '&#9;'+ catchWordArray[i,2]  + '</div>');
+            }
+
+            break;
+    }
+});
