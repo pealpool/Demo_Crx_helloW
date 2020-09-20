@@ -129,10 +129,35 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             catchWordArray = $.extend(true, [], request.catchWA);
             $('.myResult').remove();
             let i = 0;
-            while ((catchWordArray[i,0]!='') && (i <= catchWordArray.length)){
-                $('#myResultBox').prepend('<div class="myResult">' + catchWordArray[i,0] + '&#9;'+ catchWordArray[i,1] + '&#9;'+ catchWordArray[i,2]  + '</div>');
+            while ((catchWordArray[i, 0] != '') && (i <= catchWordArray.length)) {
+                drawResult(catchWordArray[i, 0], catchWordArray[i, 1], catchWordArray[i, 2]);
             }
 
             break;
     }
 });
+
+$('#myKeyWord').hover(function () {
+    $("#myKeyWord").switchClass("myKeyWord01", "myKeyWord02", 100);
+});
+
+$('#myResultBox').hover(function () {
+    $("#myKeyWord").switchClass("myKeyWord02", "myKeyWord01", 100);
+});
+
+function drawResult(a0, a1, a2) {
+    $('#myResultBox').append('<div class="tabBox"><div class="tabD0">' + a0 + '</div>' + '<div class="tabD1">' + a1 + '</div>' + '<div class="tabD2">' + a2 + '</div></div>');
+}
+
+drawResult('tents camping outdoor','橱窗推荐','第1页第20位');
+drawResult('tents camping outdoor','橱窗推荐','第1页第20位');
+drawResult('tents camping outdoor','橱窗推荐','第1页第20位');
+drawResult('tents camping outdoor','橱窗推荐','第1页第20位');
+drawResult('tents camping outdoor','橱窗推荐','第1页第20位');
+drawResult('tents camping outdoor TENTS CAMPING OUTDOOR','橱窗推荐','第15页第20位');
+drawResult('TENTS CAMPING OUTDOOR','橱窗推荐','第1页第20位');
+drawResult('tents camping outdoor','橱窗推荐','第1页第20位');
+drawResult('tents camping outdoor','橱窗推荐','第1页第20位');
+drawResult('tents camping outdoor','橱窗推荐','第1页第20位');
+drawResult('tents camping outdoor','橱窗推荐','第15页第20位');
+drawResult('tents camping outdoor','橱窗推荐','第15页第20位');

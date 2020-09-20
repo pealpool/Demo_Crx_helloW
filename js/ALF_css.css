@@ -68,7 +68,9 @@ body {
 #bigBox{
     float: left;
     width: 401px;
+    height: 400px;
     background-color: #f5f5f5;
+    /*overflow:hidden;*/
 }
 .vLine{
     float: left;
@@ -80,25 +82,33 @@ body {
 #myKeyWord {
     box-sizing: border-box;
     float: left;
-    width: 204px;
     height: 400px;
     padding: 10px;
     resize: none;
     border: none;
     background-color: #f5f5f5;
+    font-family: 微软雅黑;
     font-size: 12px;
 }
 #myKeyWord:hover{
     background-color: #fff;
 }
+.myKeyWord01{
+    width: 50px;
+}
+.myKeyWord02{
+    width: 204px;
+}
+
 #myResultBox{
     box-sizing: border-box;
-    float: left;
-    width: 196px;
+    /*float: left;*/
+    /*width: 196px;*/
     height: 400px;
-    padding: 10px;
-    overflow:auto;
+    padding-top:11px;
+    padding-left: 10px;
     font-size: 12px;
+    overflow:hidden;
 }
 #myResultBox:hover{
     background-color: #fff;
@@ -169,4 +179,39 @@ body {
 }
 .myConsole span{
     background-color: rgba(189, 215, 231,0.5);
+}
+
+#catching{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.tabBox{
+    height: 15px;
+    width: 330px;
+    background-color: #cccccc;
+    margin-bottom: 1px;
+    font-size: 12px;
+    overflow:hidden;
+}
+.tabBox div{
+    height:100%;
+    line-height: 14px;
+    padding-left: 5px;
+}
+.tabD0{
+    float: left;
+    width: 175px;
+}
+.tabD1{
+    float: left;
+    width: 53px;
+    margin-left: 1px;
+    background-color: #eee;
+}
+.tabD2{
+    float: left;
+    width: 85px;
+    margin-left: 1px;
+    background-color: #3987d0;
 }

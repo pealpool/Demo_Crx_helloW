@@ -13,6 +13,8 @@
     <list default="true" id="85be8931-1b77-4330-97e7-038c23f64116" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/ALF_css.css" beforeDir="false" afterPath="$PROJECT_DIR$/js/ALF_css.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/popup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/popup.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +86,8 @@
       <workItem from="1600412183106" duration="10606000" />
       <workItem from="1600436665068" duration="119000" />
       <workItem from="1600436798904" duration="1467000" />
+      <workItem from="1600584923470" duration="445000" />
+      <workItem from="1600585409981" duration="9968000" />
     </task>
     <servers />
   </component>
@@ -115,9 +119,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="299" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper/0.0.1920.1040@0.0.1920.1040" timestamp="1599992806920" />
-    <state x="2018" y="438" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1600221542372">
-      <screen x="0" y="0" width="3440" height="1410" />
+    <state x="1126" y="323" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1600584939634">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="1126" y="323" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600584939634" />
     <state x="2018" y="438" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.3440.1410@0.0.3440.1410" timestamp="1600221542372" />
     <state x="2332" y="552" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1600091485039">
       <screen x="0" y="0" width="3440" height="1400" />
