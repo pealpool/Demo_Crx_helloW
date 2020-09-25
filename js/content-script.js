@@ -67,7 +67,7 @@ function catchContent(search_i) {
     let key_which = '';
     textBox = $('#queryString').val();
     if (textBox == keyWordArray[search_i]) {
-        let foundWord = $('#rank-searech-table td:nth-child(1)') + '';
+        let foundWord = $('#rank-searech-table td:nth-child(1)').html();
         alert(foundWord.substring(0, 3));
         if (foundWord.substring(0, 3) == '<div') {
             key_ranking = $('#rank-searech-table td:nth-child(2) a').text();
