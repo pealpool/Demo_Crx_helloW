@@ -78,9 +78,9 @@ $('#searchButton').click(function () {
         timedMsg(response);
     });
 
-    sendMessageToContentScript({doKey: 'searchBegin', kWc: keyWordArray}, function (response) {
-        timedMsg(response);
-    });
+    // sendMessageToContentScript({doKey: 'searchBegin', kWc: keyWordArray}, function (response) {
+    //     timedMsg(response);
+    // });
 
 });
 
@@ -126,13 +126,15 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     switch (request.doKey) {
         case "bTp_catchData":
             timedMsg('收到bg数据');
-            catchWordArray = $.extend(true, [], request.catchWA);
-            $('.myResult').remove();
+            // catchWordArray = $.extend(true, [], request.catchWA);
+            $('#catching').remove();
+            $('.tabBox').remove();
             let i = 0;
-            while ((catchWordArray[i, 0] != '') && (i <= catchWordArray.length)) {
-                drawResult(catchWordArray[i, 0], catchWordArray[i, 1], catchWordArray[i, 2]);
+            // timedMsg('request.catchWA.length=' + request.catchWA.length);
+            while ((request.catchWA[i][0] != '') && (i < request.catchWA.length)) {
+                drawResult(request.catchWA[i][0], request.catchWA[i][1], request.catchWA[i][2]);
+                i++;
             }
-
             break;
     }
 });
@@ -148,16 +150,3 @@ $('#myResultBox').hover(function () {
 function drawResult(a0, a1, a2) {
     $('#myResultBox').append('<div class="tabBox"><div class="tabD0">' + a0 + '</div>' + '<div class="tabD1">' + a1 + '</div>' + '<div class="tabD2">' + a2 + '</div></div>');
 }
-
-drawResult('tents camping outdoor','橱窗推荐','第1页第20位');
-drawResult('tents camping outdoor','橱窗推荐','第1页第20位');
-drawResult('tents camping outdoor','橱窗推荐','第1页第20位');
-drawResult('tents camping outdoor','橱窗推荐','第1页第20位');
-drawResult('tents camping outdoor','橱窗推荐','第1页第20位');
-drawResult('tents camping outdoor TENTS CAMPING OUTDOOR','橱窗推荐','第15页第20位');
-drawResult('TENTS CAMPING OUTDOOR','橱窗推荐','第1页第20位');
-drawResult('tents camping outdoor','橱窗推荐','第1页第20位');
-drawResult('tents camping outdoor','橱窗推荐','第1页第20位');
-drawResult('tents camping outdoor','橱窗推荐','第1页第20位');
-drawResult('tents camping outdoor','橱窗推荐','第15页第20位');
-drawResult('tents camping outdoor','橱窗推荐','第15页第20位');

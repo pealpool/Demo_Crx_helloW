@@ -23,10 +23,10 @@
 
 let keyWordArray = new Array();
 let catchWordArray = new Array();
-catchWordArray[0] = [];
-let timerSearch;
+let keyWordArrayLength = 0;
 let search_i = 0;
 let reKeyWord = '';
+let timerSearch;
 
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     // if (message.doKey == 'keyWordChange') {
@@ -38,19 +38,36 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     switch (message.doKey) {
         case "searchBegin":
             keyWordArray = $.extend(true, [], message.kWc);
-            sendResponse('bg收数组:' + keyWordArray.length);
+            keyWordArrayLength = keyWordArray.length;
+            sendResponse('bg收数组:' + keyWordArrayLength);
+            for (let i = 0; i <= keyWordArrayLength; i++) {
+                catchWordArray[i] = new Array();
+                for (let j = 0; j <= 2; j++) {
+                    catchWordArray[i][j] = '';
+                }
+            }
             search_i = 0;
             addNewKeyWord();
+            break;
+        case "goBeginAct":
             beginActiveSearch();
             break;
         case "catch":
-            if (reKeyWord == keyWordArray[search_i]) {
-                catchWordArray[search_i, 0] = reKeyWord;
-                catchWordArray[search_i, 1] = message.keyRanking;
-                catchWordArray[search_i, 2] = message.keyWhich;
+            if(message.keyWord == keyWordArray[search_i]){
+                catchWordArray[search_i][0] = keyWordArray[search_i];
+                catchWordArray[search_i][1] = message.keyRanking;
+                catchWordArray[search_i][2] = message.keyWhich;
                 chrome.runtime.sendMessage({doKey: 'bTp_catchData', catchWA: catchWordArray});
                 sendResponse('bg_gotData');
             }
+            break;
+        case "goNext":
+            clearInterval(timerSearch);
+            if (search_i <= keyWordArray.length) {
+                search_i++;
+                addNewKeyWord();
+            }
+            break;
     }
 });
 
@@ -62,22 +79,14 @@ function sendMessageToContentScript(message, callback) {
     });
 }
 
-//todo tab刷新以后,id不同引起错误？
+
 function beginActiveSearch() {
     timerSearch = setInterval(function () {
-        sendMessageToContentScript({doKey: 'searchCheck', keyContent: search_i}, function (response) {
-            switch (response) {
-                case "finish":
-                    clearInterval(timerSearch);
-                    break;
-            }
-        });
-    }, 2000)
+        sendMessageToContentScript({doKey: 'searchCheck', keyContent: keyWordArray[search_i]});
+    }, 1000);
 }
 
 
 function addNewKeyWord() {
-    sendMessageToContentScript({doKey: 'addNewSearch', keyContent: search_i}, function (response) {
-        reKeyWord = response;
-    });
+    sendMessageToContentScript({doKey: 'addNewSearch', keyContent: keyWordArray[search_i]});
 }

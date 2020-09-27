@@ -40,47 +40,77 @@
 //             break;
 //     }
 // });
-let keyWordArray = new Array();
+// let keyWordArray = new Array();
 
+
+$(document).on("click", ".diagnosis-h3", function () {
+    console.log('click');
+    $('div.search-main button.ui-button.ui-button-primary.ui-button-large').eq(0).trigger("click");
+
+});
+
+
+let timerSearch;
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     switch (request.doKey) {
-        case "searchBegin":
-            keyWordArray = $.extend(true, [], request.kWc);
-            sendResponse('cs收数组:' + keyWordArray.length);
-            break;
+        // case "searchBegin":
+        //     keyWordArray = $.extend(true, [], request.kWc);
+        //     sendResponse('cs收数组:' + keyWordArray.length);
+        //     break;
         case "addNewSearch":
-            $('#queryString').val(keyWordArray[request.keyContent]);
-            sendResponse(keyWordArray[request.keyContent]);
-            $('div.search-main button.ui-button.ui-button-primary.ui-button-large').eq(0).trigger("click");
+            timerSearch = setInterval(function () {
+                if ($('#queryString').val() != request.keyContent) {
+                    $('#queryString').val(request.keyContent);
+                    console.log("循环中" + $('#queryString').val());
+                } else {
+                    chrome.runtime.sendMessage({doKey: 'goBeginAct',});
+                    $('div.search-main button.ui-button.ui-button-primary.ui-button-large').eq(0).trigger("click");
+                }
+            }, 5000);
             break;
         case "searchCheck":
-            sendResponse(catchContent(request.keyContent));
+            // sendResponse(catchContent(request.keyContent));
+            catchContent(request.keyContent);
             break;
 
     }
 });
 
-let textBox = '';
 
-function catchContent(search_i) {
+let textBox = '';
+let cat_ii = 0;
+
+function catchContent(keyWordArray) {
     let key_ranking = '';
     let key_which = '';
     textBox = $('#queryString').val();
-    if (textBox == keyWordArray[search_i]) {
-        let foundWord = $('#rank-searech-table td:nth-child(1)').html();
-        alert(foundWord.substring(0, 3));
-        if (foundWord.substring(0, 3) == '<div') {
-            key_ranking = $('#rank-searech-table td:nth-child(2) a').text();
-            key_which = $('#rank-searech-table td:nth-child(2) span').text();
+    console.log('cat_ii= ' + cat_ii);
+    cat_ii++;
+    console.log('textBox=' + textBox);
+    console.log('keyWordArray=' + keyWordArray);
+    if (textBox == keyWordArray) {
+        let $foundWord = $('#rank-searech-table td:nth-child(2) a').eq(0);
+        console.log('$foundWord.length=' + $foundWord.length);
+        if ($foundWord.length > 0) {
+            key_ranking = $foundWord.text();
+            key_which = $('#rank-searech-table td:nth-child(3) span').eq(0).text();
+            console.log('key_ranking=' + key_ranking);
+            console.log('key_which=' + key_which);
             chrome.runtime.sendMessage({
                 doKey: 'catch',
+                keyWord: $('#queryString').val(),
                 keyRanking: key_ranking,
                 keyWhich: key_which
             }, function (response) {
+                console.log('response=' + response);
                 if (response == 'bg_gotData') {
-                    return 'finish';
+                    chrome.runtime.sendMessage({doKey: 'goNext',});
+                    console.log("bg 收到 cs 数据");
                 }
             });
         }
     }
 }
+
+
+//todo 第二个addKey搜索时，数据未刷新，就已捕获第一个key的数据。可能要根据多个产品名及排名进行比较才能准确。
