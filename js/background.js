@@ -53,7 +53,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
             beginActiveSearch();
             break;
         case "catch":
-            if(message.keyWord == keyWordArray[search_i]){
+            if (message.keyWord == keyWordArray[search_i]) {
                 catchWordArray[search_i][0] = keyWordArray[search_i];
                 catchWordArray[search_i][1] = message.keyRanking;
                 catchWordArray[search_i][2] = message.keyWhich;
@@ -61,9 +61,18 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
                 sendResponse('bg_gotData');
             }
             break;
+        case "catchNull":
+            if (message.keyWord == keyWordArray[search_i]) {
+                catchWordArray[search_i][0] = keyWordArray[search_i];
+                catchWordArray[search_i][1] = "前20页无产品";
+                catchWordArray[search_i][2] = "";
+                chrome.runtime.sendMessage({doKey: 'bTp_catchData', catchWA: catchWordArray});
+                sendResponse('bg_gotData');
+            }
+            break;
         case "goNext":
             clearInterval(timerSearch);
-            if (search_i <= keyWordArray.length) {
+            if (search_i < keyWordArray.length) {
                 search_i++;
                 addNewKeyWord();
             }

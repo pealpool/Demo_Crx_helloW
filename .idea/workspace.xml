@@ -11,10 +11,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85be8931-1b77-4330-97e7-038c23f64116" name="默认的" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Demo_Crx_helloW.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Demo_Crx_helloW.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/ALF_css.css" beforeDir="false" afterPath="$PROJECT_DIR$/js/ALF_css.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/popup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/popup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/background.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/content-script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/content-script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +91,9 @@
       <workItem from="1601017735377" duration="31000" />
       <workItem from="1601017772977" duration="2539000" />
       <workItem from="1601189636214" duration="11309000" />
+      <workItem from="1601539560862" duration="33000" />
+      <workItem from="1601539606993" duration="758000" />
+      <workItem from="1601547242591" duration="10165000" />
     </task>
     <servers />
   </component>
@@ -137,10 +140,10 @@
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1599992806153" />
     <state x="1326" y="369" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1600096342224" />
     <state x="1326" y="372" key="FileChooserDialogImpl/0.0.3440.1410@0.0.3440.1410" timestamp="1600137994259" />
-    <state x="2027" y="542" key="SettingsEditor" timestamp="1600412580422">
-      <screen x="0" y="0" width="3440" height="1410" />
+    <state x="448" y="185" key="SettingsEditor" timestamp="1601550082426">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1599993137763" />
+    <state x="448" y="185" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1601550082426" />
     <state x="2027" y="538" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1600092349683" />
     <state x="2027" y="542" key="SettingsEditor/0.0.3440.1410@0.0.3440.1410" timestamp="1600412580422" />
     <state x="2165" y="474" key="refactoring.ChangeSignatureDialog" timestamp="1600222303868">
