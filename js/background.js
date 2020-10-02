@@ -1,26 +1,3 @@
-// chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-//     // if (message.doKey == 'keyWordChange') {
-//     //     chrome.storage.local.set({word_text: message.keyWordText}, function () {
-//     //
-//     //         sendResponse('saved: ' + message.keyWordText);
-//     //     });
-//     // }
-//     switch (message.doKey) {
-//         case "keyWordChange":
-//             // chrome.storage.local.set({word_text: message.keyWordText},function (){
-//             //     sendResponse('saved: ' + message.keyWordText);
-//             // });
-//             chrome.storage.local.set({color: 'blue'}, function() {
-//                 console.log('保存成功！');
-//             });
-//             break;
-//         // case "getText":
-//             // chrome.storage.local.get(['word_text'], function (result) {
-//             //     sendResponse(result);
-//             // });
-//     }
-// });
-
 let keyWordArray = new Array();
 let catchWordArray = new Array();
 let keyWordArrayLength = 0;
@@ -59,6 +36,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
                 catchWordArray[search_i][2] = message.keyWhich;
                 chrome.runtime.sendMessage({doKey: 'bTp_catchData', catchWA: catchWordArray});
                 sendResponse('bg_gotData');
+                printResult();
             }
             break;
         case "catchNull":
@@ -68,11 +46,13 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
                 catchWordArray[search_i][2] = "";
                 chrome.runtime.sendMessage({doKey: 'bTp_catchData', catchWA: catchWordArray});
                 sendResponse('bg_gotData');
+                printResult();
             }
             break;
         case "goNext":
+
             clearInterval(timerSearch);
-            if (search_i < keyWordArray.length) {
+            if (search_i < (keyWordArray.length - 1)) {
                 search_i++;
                 addNewKeyWord();
             }
@@ -98,4 +78,29 @@ function beginActiveSearch() {
 
 function addNewKeyWord() {
     sendMessageToContentScript({doKey: 'addNewSearch', keyContent: keyWordArray[search_i]});
+}
+
+
+
+
+
+
+
+
+
+
+function printResult() {
+    let di = 0;
+    $('.tabBox').remove();
+    while ((catchWordArray[di][0] != '') && (di < catchWordArray.length)) {
+        drawResult(catchWordArray[di][0], catchWordArray[di][1], catchWordArray[di][2]);
+        di++;
+    }
+    let resultHtml = $('#myResultBox').html();
+    console.log(resultHtml);
+    //todo 只保存一个值
+    chrome.storage.local.set({divResult: resultHtml});
+}
+function drawResult(a0, a1, a2) {
+    $('#myResultBox').append('<div class="tabBox"><div class="tabD0">' + a0 + '</div>' + '<div class="tabD1">' + a1 + '</div>' + '<div class="tabD2">' + a2 + '</div></div>');
 }
