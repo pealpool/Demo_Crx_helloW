@@ -56,9 +56,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             timerSearch = setInterval(function () {
                 if ($('#queryString').val() != request.keyContent) {
                     $('#queryString').val(request.keyContent);
+                    console.log(("request.keyContent=" + request.keyContent));
                     console.log("循环中" + $('#queryString').val());
                 } else {
-                    chrome.runtime.sendMessage({doKey: 'goBeginAct',});
+                    chrome.runtime.sendMessage({doKey: 'goBeginAct'});
                     $('div.search-main button.ui-button.ui-button-primary.ui-button-large').eq(0).trigger("click");
                     refreshKey = false;
                 }
@@ -95,8 +96,7 @@ function catchContent(keyWordArray) {
                 console.log('response=' + response);
                 if (response == 'bg_gotData') {
                     chrome.runtime.sendMessage({
-                        doKey: 'goNext',
-                        keyWord: $('#queryString').val()
+                        doKey: 'goNext'
                     });
                     console.log("bg 收到 cs 数据");
                 }

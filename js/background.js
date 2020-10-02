@@ -40,7 +40,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
             keyWordArray = $.extend(true, [], message.kWc);
             keyWordArrayLength = keyWordArray.length;
             sendResponse('bg收数组:' + keyWordArrayLength);
-            for (let i = 0; i <= keyWordArrayLength; i++) {
+            for (let i = 0; i < keyWordArrayLength; i++) {
                 catchWordArray[i] = new Array();
                 for (let j = 0; j <= 2; j++) {
                     catchWordArray[i][j] = '';

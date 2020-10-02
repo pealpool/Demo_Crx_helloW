@@ -11,7 +11,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85be8931-1b77-4330-97e7-038c23f64116" name="默认的" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Demo_Crx_helloW.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Demo_Crx_helloW.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/background.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/content-script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/content-script.js" afterDir="false" />
@@ -94,6 +93,7 @@
       <workItem from="1601539560862" duration="33000" />
       <workItem from="1601539606993" duration="758000" />
       <workItem from="1601547242591" duration="10165000" />
+      <workItem from="1601600558076" duration="5998000" />
     </task>
     <servers />
   </component>
