@@ -12,10 +12,8 @@
   <component name="ChangeListManager">
     <list default="true" id="85be8931-1b77-4330-97e7-038c23f64116" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/ALF_css.css" beforeDir="false" afterPath="$PROJECT_DIR$/js/ALF_css.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/background.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/popup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/popup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +99,7 @@
       <workItem from="1601628831919" duration="3080000" />
       <workItem from="1601635882917" duration="7300000" />
       <workItem from="1601700078419" duration="1852000" />
-      <workItem from="1601704393498" duration="8989000" />
+      <workItem from="1601704393498" duration="9989000" />
     </task>
     <servers />
   </component>
@@ -142,10 +140,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="2332" y="552" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3440.1400@0.0.3440.1400" timestamp="1600091485039" />
-    <state x="1326" y="372" key="FileChooserDialogImpl" timestamp="1600137994259">
-      <screen x="0" y="0" width="3440" height="1410" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1601716961461">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1599992806153" />
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1601716961461" />
     <state x="1326" y="369" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1600096342224" />
     <state x="1326" y="372" key="FileChooserDialogImpl/0.0.3440.1410@0.0.3440.1410" timestamp="1600137994259" />
     <state x="448" y="185" key="SettingsEditor" timestamp="1601550082426">

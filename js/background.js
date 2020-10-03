@@ -71,6 +71,14 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
             } else {
                 searching = false;
                 refreshSearchState();
+                //todo 通知无反应
+                chrome.notifications.create(null, {
+                    type: 'image',
+                    iconUrl: 'img/icon.png',
+                    title: 'The One 运营助手',
+                    message: '查询完成!',
+                    imageUrl: 'img/sds.png'
+                });
             }
             break;
     }

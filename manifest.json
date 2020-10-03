@@ -24,7 +24,8 @@
     "*://*.alibaba.com/*",
     "tabs",
     "declarativeContent",
-    "storage"
+    "storage",
+    "notifications"
   ],
   "content_scripts": [
     {
