@@ -215,3 +215,27 @@ body {
     margin-left: 1px;
     background-color: #eee;
 }
+
+.loadingIco:after {
+    content: '';
+    display: inline-block;
+    width: 0.8em;
+    height: 0.8em;
+    margin-left: 0.5em;
+    color: #ffffff;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    vertical-align: -5%;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 0% 30%);
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotatez(0deg);
+    }
+
+    to {
+        transform: rotatez(360deg);
+    }
+}

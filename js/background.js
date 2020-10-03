@@ -4,6 +4,7 @@ let keyWordArrayLength = 0;
 let search_i = 0;
 let reKeyWord = '';
 let timerSearch;
+let searching = false;
 
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     // if (message.doKey == 'keyWordChange') {
@@ -13,16 +14,25 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     //     });
     // }
     switch (message.doKey) {
+        case "loadResult":
+            if ($('#myResultBox').html() == '') {
+                sendResponse('<div id="catching">待获取数据...</div>');
+            } else {
+                sendResponse($('#myResultBox').html());
+            }
+            refreshSearchState();
+            break;
         case "searchBegin":
             keyWordArray = $.extend(true, [], message.kWc);
             keyWordArrayLength = keyWordArray.length;
-            sendResponse('bg收数组:' + keyWordArrayLength);
+            sendResponse(keyWordArrayLength);
             for (let i = 0; i < keyWordArrayLength; i++) {
                 catchWordArray[i] = new Array();
                 for (let j = 0; j <= 2; j++) {
                     catchWordArray[i][j] = '';
                 }
             }
+            searching = true;
             search_i = 0;
             addNewKeyWord();
             break;
@@ -34,7 +44,9 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
                 catchWordArray[search_i][0] = keyWordArray[search_i];
                 catchWordArray[search_i][1] = message.keyRanking;
                 catchWordArray[search_i][2] = message.keyWhich;
+                // let a = '查询中(' + (search_i + 1) + '/' + keyWordArray.length + ')';
                 chrome.runtime.sendMessage({doKey: 'bTp_catchData', catchWA: catchWordArray});
+                refreshSearchState();
                 sendResponse('bg_gotData');
                 printResult();
             }
@@ -44,17 +56,21 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
                 catchWordArray[search_i][0] = keyWordArray[search_i];
                 catchWordArray[search_i][1] = "前20页无产品";
                 catchWordArray[search_i][2] = "";
+                // let a = '查询中(' + (search_i + 1) + '/' + keyWordArray.length + ')';
                 chrome.runtime.sendMessage({doKey: 'bTp_catchData', catchWA: catchWordArray});
+                refreshSearchState();
                 sendResponse('bg_gotData');
                 printResult();
             }
             break;
         case "goNext":
-
             clearInterval(timerSearch);
             if (search_i < (keyWordArray.length - 1)) {
                 search_i++;
                 addNewKeyWord();
+            } else {
+                searching = false;
+                refreshSearchState();
             }
             break;
     }
@@ -81,8 +97,6 @@ function addNewKeyWord() {
 }
 
 
-
-
 function printResult() {
     let di = 0;
     $('.tabBox').remove();
@@ -90,10 +104,18 @@ function printResult() {
         drawResult(catchWordArray[di][0], catchWordArray[di][1], catchWordArray[di][2]);
         di++;
     }
-    // let resultHtml = $('#myResultBox').html();
-    // console.log(resultHtml);
-    // chrome.storage.local.set({divResult: resultHtml});
 }
+
 function drawResult(a0, a1, a2) {
     $('#myResultBox').append('<div class="tabBox"><div class="tabD0">' + a0 + '</div>' + '<div class="tabD1">' + a1 + '</div>' + '<div class="tabD2">' + a2 + '</div></div>');
+}
+
+function refreshSearchState() {
+    if (searching) {
+        let a = '查询中(' + (search_i + 1) + '/' + keyWordArray.length + ')';
+        chrome.runtime.sendMessage({doKey: 'SearchState_on', catchWA: a});
+    }else {
+        ;
+        chrome.runtime.sendMessage({doKey: 'SearchState_off'});
+    }
 }
