@@ -26,6 +26,8 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
             keyWordArray = $.extend(true, [], message.kWc);
             keyWordArrayLength = keyWordArray.length;
             sendResponse(keyWordArrayLength);
+
+            //todo 这个数组长度只会增长，不会缩短，二次新搜索会有问题
             for (let i = 0; i < keyWordArrayLength; i++) {
                 catchWordArray[i] = [];
                 for (let j = 0; j <= 2; j++) {
@@ -90,7 +92,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
                     ti++;
                 }
 
-
+//todo 不能复制，应该先解决上面数组问题
                 $('input').val(document.getElementById("myTable").outerHTML);
                 console.log($('input').val());
                 $('input').input.focus();
