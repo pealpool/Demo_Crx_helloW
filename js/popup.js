@@ -18,20 +18,28 @@ $('#myKeyWord').change(function () {
     chrome.storage.local.set({word_text: v_after});
 });
 
-$('#searchButton').click(function () {
+$('#copyButton').click(function (){
+    chrome.runtime.sendMessage({doKey: 'OutputCopy'}, function (response) {
+        if(response){
+            timedMsg('已导出结果到粘贴板，');
+            timedMsg('打开对于文档，');
+            timedMsg('按Ctrl+v即可粘贴。');
+        }
+    });
+});
 
+$('#searchButton').click(function () {
     // chrome.storage.local.get({word_text: '无数据'}, function(items) {
     //     $('#ddd').append('<div>提取：' + items.word_text + '</div>');
     // });
-
-
     let keyWordArray = new Array();
     let st = $('#myKeyWord').val();
     st = st.replace(/^\n*/, "");
     st = st.replace(/\n{2,}/g, "\n");
     st = st.replace(/\n*$/, "");
     keyWordArray = st.split("\n");
-
+    $('#catching').remove();
+    $('.tabBox').remove();
     chrome.runtime.sendMessage({doKey: 'searchBegin', kWc: keyWordArray}, function (response) {
         // timedMsg(response);
         $('#searchButton .font_T').text('查询中(0/' + response + ')');
@@ -54,8 +62,8 @@ $('#myResultBox').hover(function () {
 });
 
 
-function timedMsg(mytext) {
-    let $myDivRemove = $('<div class="myConsole"><span>' + mytext + '</span></div>');
+function timedMsg(myText) {
+    let $myDivRemove = $('<div class="myConsole"><span>' + myText + '</span></div>');
     $('#myConsoleBox').prepend($myDivRemove);
     let t = setTimeout(function () {
         $myDivRemove.hide('fade', 1000, function () {

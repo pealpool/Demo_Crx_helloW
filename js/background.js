@@ -1,5 +1,5 @@
-let keyWordArray = new Array();
-let catchWordArray = new Array();
+let keyWordArray = [];
+let catchWordArray = [];
 let keyWordArrayLength = 0;
 let search_i = 0;
 let reKeyWord = '';
@@ -27,7 +27,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
             keyWordArrayLength = keyWordArray.length;
             sendResponse(keyWordArrayLength);
             for (let i = 0; i < keyWordArrayLength; i++) {
-                catchWordArray[i] = new Array();
+                catchWordArray[i] = [];
                 for (let j = 0; j <= 2; j++) {
                     catchWordArray[i][j] = '';
                 }
@@ -71,14 +71,34 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
             } else {
                 searching = false;
                 refreshSearchState();
-                //todo 通知无反应
                 chrome.notifications.create(null, {
-                    type: 'image',
-                    iconUrl: 'img/icon.png',
+                    type: 'basic',
+                    iconUrl: 'images/logoTO.png',
                     title: 'The One 运营助手',
                     message: '查询完成!',
-                    imageUrl: 'img/sds.png'
+                    requireInteraction: true
+                    // imageUrl: 'img/sds.png'
                 });
+            }
+            break;
+        case "OutputCopy":
+            if (!searching) {
+                let ti = 0;
+                $('#myTable').empty();
+                while ((catchWordArray[ti][0] != '') && (ti < catchWordArray.length)) {
+                    drawTable(catchWordArray[ti][0], catchWordArray[ti][1], catchWordArray[ti][2]);
+                    ti++;
+                }
+
+
+                $('input').val(document.getElementById("myTable").outerHTML);
+                console.log($('input').val());
+                $('input').input.focus();
+                $('input').select();
+                document.execCommand('Copy');
+                // input.remove();
+                // window.clipboardData.setData('text', document.getElementById("myTable").outerHTML);
+                sendResponse(true);
             }
             break;
     }
@@ -118,12 +138,17 @@ function drawResult(a0, a1, a2) {
     $('#myResultBox').append('<div class="tabBox"><div class="tabD0">' + a0 + '</div>' + '<div class="tabD1">' + a1 + '</div>' + '<div class="tabD2">' + a2 + '</div></div>');
 }
 
+function drawTable(a0, a1, a2) {
+    $('#myTable').append('<tr><td>' + a0 + '</td>' + '<td>' + a1 + '</td>' + '<td>' + a2 + '</td></tr>');
+}
+
 function refreshSearchState() {
     if (searching) {
         let a = '查询中(' + (search_i + 1) + '/' + keyWordArray.length + ')';
         chrome.runtime.sendMessage({doKey: 'SearchState_on', catchWA: a});
-    }else {
+    } else {
         ;
         chrome.runtime.sendMessage({doKey: 'SearchState_off'});
     }
 }
+

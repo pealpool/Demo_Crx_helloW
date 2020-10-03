@@ -115,7 +115,7 @@ body {
 }
 #searchButton{
     float: left;
-    width: 401px;
+    width: 341px;
     height: 60px;
     line-height: 60px;
     cursor: pointer;
@@ -132,8 +132,27 @@ body {
 #searchButton:active{
     background-color: #174C81;
 }
+#copyButton{
+    float: left;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    cursor: pointer;
+    background-color: #174C81;
+    color:#fff;
+    font-size: 66px;
+    text-align: center;
+    overflow:hidden;
+    user-select:none;
+}
+#copyButton:hover{
+    background-color: #3987d0;
+}
+#copyButton:active{
+    background-color: #174C81;
+}
 .font_T{
-    width: 401px;
+    width: auto;
     height: 60px;
     margin-top: -60px;
     line-height: 60px;
@@ -142,7 +161,7 @@ body {
     text-align: center;
 }
 .font_B{
-    width: 401px;
+    width: auto;
     height: 60px;
     font-size: 100px;
     font-weight: bold;
@@ -189,7 +208,6 @@ body {
 .tabBox{
     height: 15px;
     width: 330px;
-    background-color: #cccccc;
     margin-bottom: 1px;
     font-size: 12px;
     overflow:hidden;
@@ -198,6 +216,7 @@ body {
     height:100%;
     line-height: 14px;
     padding-left: 5px;
+    background-color: #f5f5f5;
 }
 .tabD0{
     float: left;
@@ -207,13 +226,11 @@ body {
     float: left;
     width: 85px;
     margin-left: 1px;
-    background-color: #eee;
 }
 .tabD2{
     float: left;
     width: 53px;
     margin-left: 1px;
-    background-color: #eee;
 }
 
 .loadingIco:after {
