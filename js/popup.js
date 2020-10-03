@@ -5,10 +5,13 @@ catchWordArray[0] = [];
 chrome.storage.local.get({word_text: '无数据'}, function (items) {
     $('#myKeyWord').val(items.word_text);
 });
-chrome.storage.local.get({divResult: ''}, function (items) {
-    $('#myResultBox').html(items.divResult);
-});
+// chrome.storage.local.get({divResult: ''}, function (items) {
+//     $('#myResultBox').html(items.divResult);
+// });
 
+chrome.runtime.sendMessage({doKey: 'loadResult'}, function (response) {
+    timedMsg(response);
+});
 
 $('#myKeyWord').change(function () {
     let v_after = $('#myKeyWord').val();

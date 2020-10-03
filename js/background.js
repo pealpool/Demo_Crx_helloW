@@ -83,12 +83,6 @@ function addNewKeyWord() {
 
 
 
-
-
-
-
-
-
 function printResult() {
     let di = 0;
     $('.tabBox').remove();
@@ -96,10 +90,9 @@ function printResult() {
         drawResult(catchWordArray[di][0], catchWordArray[di][1], catchWordArray[di][2]);
         di++;
     }
-    let resultHtml = $('#myResultBox').html();
-    console.log(resultHtml);
-    //todo 只保存一个值
-    chrome.storage.local.set({divResult: resultHtml});
+    // let resultHtml = $('#myResultBox').html();
+    // console.log(resultHtml);
+    // chrome.storage.local.set({divResult: resultHtml});
 }
 function drawResult(a0, a1, a2) {
     $('#myResultBox').append('<div class="tabBox"><div class="tabD0">' + a0 + '</div>' + '<div class="tabD1">' + a1 + '</div>' + '<div class="tabD2">' + a2 + '</div></div>');
