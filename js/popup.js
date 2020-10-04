@@ -32,19 +32,25 @@ $('#searchButton').click(function () {
     // chrome.storage.local.get({word_text: '无数据'}, function(items) {
     //     $('#ddd').append('<div>提取：' + items.word_text + '</div>');
     // });
-    let keyWordArray = new Array();
-    let st = $('#myKeyWord').val();
-    st = st.replace(/^\n*/, "");
-    st = st.replace(/\n{2,}/g, "\n");
-    st = st.replace(/\n*$/, "");
-    keyWordArray = st.split("\n");
-    $('#catching').remove();
-    $('.tabBox').remove();
-    chrome.runtime.sendMessage({doKey: 'searchBegin', kWc: keyWordArray}, function (response) {
-        // timedMsg(response);
-        $('#searchButton .font_T').text('查询中(0/' + response + ')');
-        $('#searchButton .font_T').addClass('loadingIco');
-    });
+    if($('#searchButton').attr('class')=='blueButtonHover'){
+        let keyWordArray = [];
+        let st = $('#myKeyWord').val();
+        st = st.replace(/^\n*/, "");
+        st = st.replace(/\n{2,}/g, "\n");
+        st = st.replace(/\n*$/, "");
+        keyWordArray = st.split("\n");
+        $('#catching').remove();
+        $('.tabBox').remove();
+        chrome.runtime.sendMessage({doKey: 'searchBegin', kWc: keyWordArray}, function (response) {
+            // timedMsg(response);
+            $('#searchButton .font_T').text('查询中(0/' + response + ')');
+            $('#searchButton .font_T').addClass('loadingIco');
+            $('#searchButton').removeClass('blueButtonHover');
+            //todo 停止按钮
+            $('#copyButton .font_T').text('停止');
+            $('#copyButton').addClass('redButton').removeClass('blueButtonHover');
+        });
+    }
 });
 
 function sendMessageToContentScript(message, callback) {
@@ -94,7 +100,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             $('.tabBox').remove();
             let i = 0;
             // timedMsg('request.catchWA.length=' + request.catchWA.length);
-            while ((request.catchWA[i][0] != '') && (i < request.le)) {
+            while ((request.catchWA[i][0] != '') && (i <= request.le)) {
                 drawResult(request.catchWA[i][0], request.catchWA[i][1], request.catchWA[i][2]);
                 i++;
             }
@@ -102,10 +108,12 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         case "SearchState_on":
             $('#searchButton .font_T').text(request.catchWA);
             $('#searchButton .font_T').addClass('loadingIco');
+            $('#searchButton').removeClass('blueButtonHover');
             break;
         case "SearchState_off":
             $('#searchButton .font_T').text('查询');
             $('#searchButton .font_T').removeClass('loadingIco');
+            $('#searchButton').addClass('blueButtonHover');
             break;
     }
 });

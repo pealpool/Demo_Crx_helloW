@@ -12,8 +12,10 @@
   <component name="ChangeListManager">
     <list default="true" id="85be8931-1b77-4330-97e7-038c23f64116" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/ALF_css.css" beforeDir="false" afterPath="$PROJECT_DIR$/js/ALF_css.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/background.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/popup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/popup.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +103,7 @@
       <workItem from="1601700078419" duration="1852000" />
       <workItem from="1601704393498" duration="9989000" />
       <workItem from="1601730555242" duration="12005000" />
-      <workItem from="1601781934588" duration="2425000" />
+      <workItem from="1601781934588" duration="9349000" />
     </task>
     <servers />
   </component>

@@ -45,7 +45,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
                 catchWordArray[search_i][1] = message.keyRanking;
                 catchWordArray[search_i][2] = message.keyWhich;
                 // let a = '查询中(' + (search_i + 1) + '/' + keyWordArray.length + ')';
-                chrome.runtime.sendMessage({doKey: 'bTp_catchData', catchWA: catchWordArray,le:keyWordArrayLength});
+                chrome.runtime.sendMessage({doKey: 'bTp_catchData', catchWA: catchWordArray,le:search_i});
                 refreshSearchState();
                 sendResponse('bg_gotData');
                 printResult();
@@ -57,7 +57,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
                 catchWordArray[search_i][1] = "前20页无产品";
                 catchWordArray[search_i][2] = "";
                 // let a = '查询中(' + (search_i + 1) + '/' + keyWordArray.length + ')';
-                chrome.runtime.sendMessage({doKey: 'bTp_catchData', catchWA: catchWordArray,le:keyWordArrayLength});
+                chrome.runtime.sendMessage({doKey: 'bTp_catchData', catchWA: catchWordArray,le:search_i});
                 refreshSearchState();
                 sendResponse('bg_gotData');
                 printResult();
@@ -90,14 +90,11 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
                     ti++;
                 }
 
-//todo 不能复制，应该先解决上面数组问题
                 $('input').val(document.getElementById("myTable").outerHTML);
-                console.log($('input').val());
+                // console.log($('input').val());
                 $('input').focus();
                 $('input').select();
                 document.execCommand('Copy');
-                // input.remove();
-                // window.clipboardData.setData('text', document.getElementById("myTable").outerHTML);
                 sendResponse(true);
             }
             break;

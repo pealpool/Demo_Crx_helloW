@@ -119,18 +119,18 @@ body {
     height: 60px;
     line-height: 60px;
     cursor: pointer;
-    background-color: #174C81;
     color:#fff;
     font-size: 66px;
     text-align: center;
     overflow:hidden;
     user-select:none;
-}
-#searchButton:hover{
-    background-color: #3987d0;
-}
-#searchButton:active{
     background-color: #174C81;
+}
+.blueButtonHover:hover{
+    background-color: #3987d0!important;
+}
+.blueButtonHover:active{
+    background-color: #174C81!important;
 }
 #copyButton{
     float: left;
@@ -138,18 +138,24 @@ body {
     height: 60px;
     line-height: 60px;
     cursor: pointer;
-    background-color: #174C81;
     color:#fff;
     font-size: 66px;
     text-align: center;
     overflow:hidden;
     user-select:none;
-}
-#copyButton:hover{
-    background-color: #3987d0;
-}
-#copyButton:active{
     background-color: #174C81;
+}
+.redButton{
+    background-color: #d63333!important;
+}
+.redButton:hover{
+    background-color: #ff3434!important;
+}
+.redButton:active{
+    background-color: #d63333!important;
+}
+.redButton > .font_B{
+    color: #f17171!important;
 }
 .font_T{
     width: auto;
@@ -220,11 +226,11 @@ body {
 }
 .tabD0{
     float: left;
-    width: 175px;
+    width: 165px;
 }
 .tabD1{
     float: left;
-    width: 85px;
+    width: 95px;
     margin-left: 1px;
 }
 .tabD2{
