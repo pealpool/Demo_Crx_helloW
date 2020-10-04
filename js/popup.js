@@ -94,7 +94,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             $('.tabBox').remove();
             let i = 0;
             // timedMsg('request.catchWA.length=' + request.catchWA.length);
-            while ((request.catchWA[i][0] != '') && (i < request.catchWA.length)) {
+            while ((request.catchWA[i][0] != '') && (i < request.le)) {
                 drawResult(request.catchWA[i][0], request.catchWA[i][1], request.catchWA[i][2]);
                 i++;
             }

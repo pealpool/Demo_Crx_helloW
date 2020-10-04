@@ -5,6 +5,12 @@ let search_i = 0;
 let reKeyWord = '';
 let timerSearch;
 let searching = false;
+for (let i = 0; i < 100; i++) {
+    catchWordArray[i] = [];
+    for (let j = 0; j <= 2; j++) {
+        catchWordArray[i][j] = '';
+    }
+}
 
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     // if (message.doKey == 'keyWordChange') {
@@ -26,14 +32,6 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
             keyWordArray = $.extend(true, [], message.kWc);
             keyWordArrayLength = keyWordArray.length;
             sendResponse(keyWordArrayLength);
-
-            //todo 这个数组长度只会增长，不会缩短，二次新搜索会有问题
-            for (let i = 0; i < keyWordArrayLength; i++) {
-                catchWordArray[i] = [];
-                for (let j = 0; j <= 2; j++) {
-                    catchWordArray[i][j] = '';
-                }
-            }
             searching = true;
             search_i = 0;
             addNewKeyWord();
@@ -47,7 +45,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
                 catchWordArray[search_i][1] = message.keyRanking;
                 catchWordArray[search_i][2] = message.keyWhich;
                 // let a = '查询中(' + (search_i + 1) + '/' + keyWordArray.length + ')';
-                chrome.runtime.sendMessage({doKey: 'bTp_catchData', catchWA: catchWordArray});
+                chrome.runtime.sendMessage({doKey: 'bTp_catchData', catchWA: catchWordArray,le:keyWordArrayLength});
                 refreshSearchState();
                 sendResponse('bg_gotData');
                 printResult();
@@ -59,7 +57,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
                 catchWordArray[search_i][1] = "前20页无产品";
                 catchWordArray[search_i][2] = "";
                 // let a = '查询中(' + (search_i + 1) + '/' + keyWordArray.length + ')';
-                chrome.runtime.sendMessage({doKey: 'bTp_catchData', catchWA: catchWordArray});
+                chrome.runtime.sendMessage({doKey: 'bTp_catchData', catchWA: catchWordArray,le:keyWordArrayLength});
                 refreshSearchState();
                 sendResponse('bg_gotData');
                 printResult();
@@ -87,7 +85,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
             if (!searching) {
                 let ti = 0;
                 $('#myTable').empty();
-                while ((catchWordArray[ti][0] != '') && (ti < catchWordArray.length)) {
+                while ((catchWordArray[ti][0] != '') && (ti < keyWordArrayLength)) {
                     drawTable(catchWordArray[ti][0], catchWordArray[ti][1], catchWordArray[ti][2]);
                     ti++;
                 }
@@ -95,7 +93,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 //todo 不能复制，应该先解决上面数组问题
                 $('input').val(document.getElementById("myTable").outerHTML);
                 console.log($('input').val());
-                $('input').input.focus();
+                $('input').focus();
                 $('input').select();
                 document.execCommand('Copy');
                 // input.remove();
@@ -130,7 +128,7 @@ function addNewKeyWord() {
 function printResult() {
     let di = 0;
     $('.tabBox').remove();
-    while ((catchWordArray[di][0] != '') && (di < catchWordArray.length)) {
+    while ((catchWordArray[di][0] != '') && (di < keyWordArrayLength)) {
         drawResult(catchWordArray[di][0], catchWordArray[di][1], catchWordArray[di][2]);
         di++;
     }
@@ -146,7 +144,7 @@ function drawTable(a0, a1, a2) {
 
 function refreshSearchState() {
     if (searching) {
-        let a = '查询中(' + (search_i + 1) + '/' + keyWordArray.length + ')';
+        let a = '查询中(' + (search_i + 1) + '/' + keyWordArrayLength + ')';
         chrome.runtime.sendMessage({doKey: 'SearchState_on', catchWA: a});
     } else {
         ;
