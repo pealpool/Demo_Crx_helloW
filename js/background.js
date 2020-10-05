@@ -35,7 +35,12 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
             sendResponse(keyWordArrayLength);
             searching = true;
             search_i = 0;
-            addNewKeyWord();
+
+            chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+                myTab = tabs[0];
+                addNewKeyWord();
+            });
+
             break;
         case "goBeginAct":
             beginActiveSearch();
@@ -46,7 +51,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
                 catchWordArray[search_i][1] = message.keyRanking;
                 catchWordArray[search_i][2] = message.keyWhich;
                 // let a = '查询中(' + (search_i + 1) + '/' + keyWordArray.length + ')';
-                chrome.runtime.sendMessage({doKey: 'bTp_catchData', catchWA: catchWordArray,le:search_i});
+                chrome.runtime.sendMessage({doKey: 'bTp_catchData', catchWA: catchWordArray, le: search_i});
                 refreshSearchState();
                 sendResponse('bg_gotData');
                 printResult();
@@ -58,7 +63,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
                 catchWordArray[search_i][1] = "前20页无产品";
                 catchWordArray[search_i][2] = "";
                 // let a = '查询中(' + (search_i + 1) + '/' + keyWordArray.length + ')';
-                chrome.runtime.sendMessage({doKey: 'bTp_catchData', catchWA: catchWordArray,le:search_i});
+                chrome.runtime.sendMessage({doKey: 'bTp_catchData', catchWA: catchWordArray, le: search_i});
                 refreshSearchState();
                 sendResponse('bg_gotData');
                 printResult();
@@ -90,42 +95,48 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
                     drawTable(catchWordArray[ti][0], catchWordArray[ti][1], catchWordArray[ti][2]);
                     ti++;
                 }
-
-                $('input').val(document.getElementById("myTable").outerHTML);
-                // console.log($('input').val());
-                $('input').focus();
-                $('input').select();
-                document.execCommand('Copy');
-                sendResponse(true);
+                let inp = $('input');
+                inp.val(document.getElementById("myTable").outerHTML);
+                if($('#myTable').html()==''){
+                    sendResponse(false);
+                }else {
+                    inp.focus();
+                    inp.select();
+                    document.execCommand('Copy');
+                    sendResponse(true);
+                }
             }
             break;
         case "stop":
             clearInterval(timerSearch);
             searching = false;
             chrome.runtime.sendMessage({doKey: 'SearchState_off'});
+            chrome.tabs.sendMessage(myTab.id, {doKey: 'stop'});
             sendResponse(true);
             break;
     }
 });
 
-function sendMessageToContentScript(message, callback) {
-    chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, message, function (response) {
-            if (callback) callback(response);
-        });
-    });
-}
+// function sendMessageToContentScript(message, callback) {
+//     chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+//         chrome.tabs.sendMessage(tabs[0].id, message, function (response) {
+//             if (callback) callback(response);
+//         });
+//     });
+// }
 
 
 function beginActiveSearch() {
     timerSearch = setInterval(function () {
-        sendMessageToContentScript({doKey: 'searchCheck', keyContent: keyWordArray[search_i]});
+        // sendMessageToContentScript({doKey: 'searchCheck', keyContent: keyWordArray[search_i]});
+        chrome.tabs.sendMessage(myTab.id, {doKey: 'searchCheck', keyContent: keyWordArray[search_i]});
     }, 1000);
 }
 
 
 function addNewKeyWord() {
-    sendMessageToContentScript({doKey: 'addNewSearch', keyContent: keyWordArray[search_i]});
+    // sendMessageToContentScript({doKey: 'addNewSearch', keyContent: keyWordArray[search_i]});
+    chrome.tabs.sendMessage(myTab.id, {doKey: 'addNewSearch', keyContent: keyWordArray[search_i]});
 }
 
 

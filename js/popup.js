@@ -1,4 +1,4 @@
-let catchWordArray = new Array();
+let catchWordArray = [];
 catchWordArray[0] = [];
 
 
@@ -14,22 +14,23 @@ chrome.runtime.sendMessage({doKey: 'loadResult'}, function (response) {
 });
 
 $('#myKeyWord').change(function () {
-    let v_after = $('#myKeyWord').val();
+    let v_after = $(this).val();
     chrome.storage.local.set({word_text: v_after});
 });
 
 $('#copyButton').click(function () {
-    if ($(this).attr('class') == 'blueButtonHover') {
+    if ($(this).attr('class') === 'blueButtonHover') {
         chrome.runtime.sendMessage({doKey: 'OutputCopy'}, function (response) {
             if (response) {
                 timedMsg('已导出结果到粘贴板，');
                 timedMsg('打开相应Excel文档，');
                 timedMsg('按Ctrl+v即可粘贴。');
+            } else {
+                timedMsg('无数据。');
             }
         });
     } else {
         chrome.runtime.sendMessage({doKey: 'stop'});
-        sendMessageToContentScript({doKey: 'stop'});
         timedMsg('查询已手动停止。');
     }
 });
@@ -38,17 +39,17 @@ $('#searchButton').click(function () {
     // chrome.storage.local.get({word_text: '无数据'}, function(items) {
     //     $('#ddd').append('<div>提取：' + items.word_text + '</div>');
     // });
-    if ($(this).attr('class') == 'blueButtonHover') {
+    if ($(this).attr('class') === 'blueButtonHover') {
         let activeUrl;
         chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
             activeUrl = tabs[0].url;
-            let exp1 = /^(https\:\/\/hz\-productposting\.alibaba\.com\/product\/ranksearch\/rankSearch\.htm)/;
-            let exp2 = /^(https\:\/\/passport\.alibaba\.com\/icbu_login\.htm)/;
+            let exp1 = /^(https:\/\/hz-productposting\.alibaba\.com\/product\/ranksearch\/rankSearch\.htm)/;
+            let exp2 = /^(https:\/\/passport\.alibaba\.com\/icbu_login\.htm)/;
             if (exp1.test(activeUrl)) {
                 searchClick();
-            }else if(exp2.test(activeUrl)){
+            } else if (exp2.test(activeUrl)) {
                 timedMsg('请先登录后继续。');
-            }else {
+            } else {
                 timedMsg('正在打开查询网站');
                 chrome.tabs.create({url: 'https://hz-productposting.alibaba.com/product/ranksearch/rankSearch.htm'});
             }
@@ -58,7 +59,7 @@ $('#searchButton').click(function () {
 
 
 function searchClick() {
-    let keyWordArray = [];
+    let keyWordArray;
     let st = $('#myKeyWord').val();
     st = st.replace(/^\n*/, "");
     st = st.replace(/\n{2,}/g, "\n");
@@ -68,21 +69,21 @@ function searchClick() {
     $('.tabBox').remove();
     chrome.runtime.sendMessage({doKey: 'searchBegin', kWc: keyWordArray}, function (response) {
         // timedMsg(response);
-        $('#searchButton .font_T').text('查询中(0/' + response + ')');
-        $('#searchButton .font_T').addClass('loadingIco');
+        $('#searchButton .font_T').text('查询中(0/' + response + ')').addClass('loadingIco');
+        // $('#searchButton .font_T').addClass('loadingIco');
         $('#searchButton').removeClass('blueButtonHover');
         $('#copyButton .font_T').text('停止');
         $('#copyButton').addClass('redButton').removeClass('blueButtonHover');
     });
 }
 
-function sendMessageToContentScript(message, callback) {
-    chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, message, function (response) {
-            if (callback) callback(response);
-        });
-    });
-}
+// function sendMessageToContentScript(message, callback) {
+//     chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+//         chrome.tabs.sendMessage(tabs[0].id, message, function (response) {
+//             if (callback) callback(response);
+//         });
+//     });
+// }
 
 $('#myResultBox').hover(function () {
     $('#myConsoleBox').css('opacity', 0.1);
@@ -94,7 +95,7 @@ $('#myResultBox').hover(function () {
 function timedMsg(myText) {
     let $myDivRemove = $('<div class="myConsole"><span>' + myText + '</span></div>');
     $('#myConsoleBox').prepend($myDivRemove);
-    let t = setTimeout(function () {
+    setTimeout(function () {
         $myDivRemove.hide('fade', 1000, function () {
             $myDivRemove.remove();
         });
@@ -103,11 +104,11 @@ function timedMsg(myText) {
 
 $('#logoName_T .smallFont').click(function () {
     timedMsg('检查是否有更新可用...');
-    let t1 = setTimeout(function () {
+    setTimeout(function () {
         timedMsg('试用版：不能自动升级。');
-        let t2 = setTimeout(function () {
+        setTimeout(function () {
             timedMsg('获取更多功能或bug修复，');
-            let t3 = setTimeout(function () {
+            setTimeout(function () {
                 timedMsg('请联系本地服务商。');
             }, 2000);
         }, 2000);
@@ -123,21 +124,21 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             $('.tabBox').remove();
             let i = 0;
             // timedMsg('request.catchWA.length=' + request.catchWA.length);
-            while ((request.catchWA[i][0] != '') && (i <= request.le)) {
+            while ((request.catchWA[i][0] !== '') && (i <= request.le)) {
                 drawResult(request.catchWA[i][0], request.catchWA[i][1], request.catchWA[i][2]);
                 i++;
             }
             break;
         case "SearchState_on":
-            $('#searchButton .font_T').text(request.catchWA);
-            $('#searchButton .font_T').addClass('loadingIco');
+            $('#searchButton .font_T').text(request.catchWA).addClass('loadingIco');
+            // $('#searchButton .font_T').addClass('loadingIco');
             $('#searchButton').removeClass('blueButtonHover');
             $('#copyButton .font_T').text('停止');
             $('#copyButton').addClass('redButton').removeClass('blueButtonHover');
             break;
         case "SearchState_off":
-            $('#searchButton .font_T').text('查询');
-            $('#searchButton .font_T').removeClass('loadingIco');
+            $('#searchButton .font_T').text('查询').removeClass('loadingIco');
+            // $('#searchButton .font_T').removeClass('loadingIco');
             $('#searchButton').addClass('blueButtonHover');
             $('#copyButton .font_T').text('导出');
             $('#copyButton').removeClass('redButton').addClass('blueButtonHover');
