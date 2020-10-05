@@ -98,6 +98,12 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
                 sendResponse(true);
             }
             break;
+        case "stop":
+            clearInterval(timerSearch);
+            searching = false;
+            chrome.runtime.sendMessage({doKey: 'SearchState_off'});
+            sendResponse(true);
+            break;
     }
 });
 

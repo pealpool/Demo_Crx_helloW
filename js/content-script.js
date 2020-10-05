@@ -19,12 +19,13 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             }, 5000);
             break;
         case "searchCheck":
-            // sendResponse(catchContent(request.keyContent));
             if(refreshKey){
                 catchContent(request.keyContent);
             }
             break;
-
+        case "stop":
+            clearInterval(timerSearch);
+            break;
     }
 });
 

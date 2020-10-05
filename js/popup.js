@@ -19,20 +19,26 @@ $('#myKeyWord').change(function () {
 });
 
 $('#copyButton').click(function (){
-    chrome.runtime.sendMessage({doKey: 'OutputCopy'}, function (response) {
-        if(response){
-            timedMsg('已导出结果到粘贴板，');
-            timedMsg('打开对于文档，');
-            timedMsg('按Ctrl+v即可粘贴。');
-        }
-    });
+    if($(this).attr('class')=='blueButtonHover'){
+        chrome.runtime.sendMessage({doKey: 'OutputCopy'}, function (response) {
+            if(response){
+                timedMsg('已导出结果到粘贴板，');
+                timedMsg('打开相应Excel文档，');
+                timedMsg('按Ctrl+v即可粘贴。');
+            }
+        });
+    }else {
+        chrome.runtime.sendMessage({doKey: 'stop'});
+        sendMessageToContentScript({doKey: 'stop'});
+        timedMsg('查询已手动停止。');
+    }
 });
 
 $('#searchButton').click(function () {
     // chrome.storage.local.get({word_text: '无数据'}, function(items) {
     //     $('#ddd').append('<div>提取：' + items.word_text + '</div>');
     // });
-    if($('#searchButton').attr('class')=='blueButtonHover'){
+    if($(this).attr('class')=='blueButtonHover'){
         let keyWordArray = [];
         let st = $('#myKeyWord').val();
         st = st.replace(/^\n*/, "");
@@ -46,7 +52,6 @@ $('#searchButton').click(function () {
             $('#searchButton .font_T').text('查询中(0/' + response + ')');
             $('#searchButton .font_T').addClass('loadingIco');
             $('#searchButton').removeClass('blueButtonHover');
-            //todo 停止按钮
             $('#copyButton .font_T').text('停止');
             $('#copyButton').addClass('redButton').removeClass('blueButtonHover');
         });
@@ -114,6 +119,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             $('#searchButton .font_T').text('查询');
             $('#searchButton .font_T').removeClass('loadingIco');
             $('#searchButton').addClass('blueButtonHover');
+            $('#copyButton .font_T').text('导出');
+            $('#copyButton').removeClass('redButton').addClass('blueButtonHover');
             break;
     }
 });
