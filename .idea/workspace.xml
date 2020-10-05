@@ -11,12 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85be8931-1b77-4330-97e7-038c23f64116" name="默认的" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Demo_Crx_helloW.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Demo_Crx_helloW.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/background.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/content-script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/content-script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/popup.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +101,7 @@
       <workItem from="1601730555242" duration="12005000" />
       <workItem from="1601781934588" duration="9349000" />
       <workItem from="1601866306267" duration="33000" />
-      <workItem from="1601866354849" duration="25876000" />
+      <workItem from="1601866354849" duration="28701000" />
     </task>
     <servers />
   </component>

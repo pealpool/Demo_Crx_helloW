@@ -2,6 +2,7 @@ let keyWordArray = [];
 let catchWordArray = [];
 let keyWordArrayLength = 0;
 let search_i = 0;
+let sub_i = 0;
 let reKeyWord = '';
 let timerSearch;
 let searching = false;
@@ -32,15 +33,16 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
         case "searchBegin":
             keyWordArray = $.extend(true, [], message.kWc);
             keyWordArrayLength = keyWordArray.length;
+            sub_i = keyWordArrayLength;
             sendResponse(keyWordArrayLength);
             searching = true;
             search_i = 0;
-
             chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
                 myTab = tabs[0];
                 addNewKeyWord();
             });
-
+            chrome.browserAction.setBadgeText({text: (sub_i + '')});
+            chrome.browserAction.setBadgeBackgroundColor({color: [255, 0, 0, 255]});
             break;
         case "goBeginAct":
             beginActiveSearch();
@@ -73,10 +75,14 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
             clearInterval(timerSearch);
             if (search_i < (keyWordArray.length - 1)) {
                 search_i++;
+                sub_i = keyWordArrayLength - search_i;
+                chrome.browserAction.setBadgeText({text: (sub_i + '')});
                 addNewKeyWord();
             } else {
                 searching = false;
                 refreshSearchState();
+                chrome.browserAction.setBadgeText({text: ''});
+                chrome.browserAction.setBadgeBackgroundColor({color: [0, 0, 0, 0]});
                 chrome.notifications.create(null, {
                     type: 'basic',
                     iconUrl: 'images/logoTO.png',
@@ -113,7 +119,9 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
             clearInterval(timerSearch);
             searching = false;
             chrome.runtime.sendMessage({doKey: 'SearchState_off'});
-            chrome.tabs.sendMessage(myTab.id, {doKey: 'stop'});
+            chrome.tabs.sendMessage(myTab.id, {doKey: 'stop'})
+            chrome.browserAction.setBadgeText({text: ''});
+            chrome.browserAction.setBadgeBackgroundColor({color: [0, 0, 0, 0]});
             sendResponse(true);
             break;
     }
