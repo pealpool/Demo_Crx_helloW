@@ -18,16 +18,16 @@ $('#myKeyWord').change(function () {
     chrome.storage.local.set({word_text: v_after});
 });
 
-$('#copyButton').click(function (){
-    if($(this).attr('class')=='blueButtonHover'){
+$('#copyButton').click(function () {
+    if ($(this).attr('class') == 'blueButtonHover') {
         chrome.runtime.sendMessage({doKey: 'OutputCopy'}, function (response) {
-            if(response){
+            if (response) {
                 timedMsg('已导出结果到粘贴板，');
                 timedMsg('打开相应Excel文档，');
                 timedMsg('按Ctrl+v即可粘贴。');
             }
         });
-    }else {
+    } else {
         chrome.runtime.sendMessage({doKey: 'stop'});
         sendMessageToContentScript({doKey: 'stop'});
         timedMsg('查询已手动停止。');
@@ -38,25 +38,43 @@ $('#searchButton').click(function () {
     // chrome.storage.local.get({word_text: '无数据'}, function(items) {
     //     $('#ddd').append('<div>提取：' + items.word_text + '</div>');
     // });
-    if($(this).attr('class')=='blueButtonHover'){
-        let keyWordArray = [];
-        let st = $('#myKeyWord').val();
-        st = st.replace(/^\n*/, "");
-        st = st.replace(/\n{2,}/g, "\n");
-        st = st.replace(/\n*$/, "");
-        keyWordArray = st.split("\n");
-        $('#catching').remove();
-        $('.tabBox').remove();
-        chrome.runtime.sendMessage({doKey: 'searchBegin', kWc: keyWordArray}, function (response) {
-            // timedMsg(response);
-            $('#searchButton .font_T').text('查询中(0/' + response + ')');
-            $('#searchButton .font_T').addClass('loadingIco');
-            $('#searchButton').removeClass('blueButtonHover');
-            $('#copyButton .font_T').text('停止');
-            $('#copyButton').addClass('redButton').removeClass('blueButtonHover');
+    if ($(this).attr('class') == 'blueButtonHover') {
+        let activeUrl;
+        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+            activeUrl = tabs[0].url;
+            let exp1 = /^(https\:\/\/hz\-productposting\.alibaba\.com\/product\/ranksearch\/rankSearch\.htm)/;
+            let exp2 = /^(https\:\/\/passport\.alibaba\.com\/icbu_login\.htm)/;
+            if (exp1.test(activeUrl)) {
+                searchClick();
+            }else if(exp2.test(activeUrl)){
+                timedMsg('请先登录后继续。');
+            }else {
+                timedMsg('正在打开查询网站');
+                chrome.tabs.create({url: 'https://hz-productposting.alibaba.com/product/ranksearch/rankSearch.htm'});
+            }
         });
     }
 });
+
+
+function searchClick() {
+    let keyWordArray = [];
+    let st = $('#myKeyWord').val();
+    st = st.replace(/^\n*/, "");
+    st = st.replace(/\n{2,}/g, "\n");
+    st = st.replace(/\n*$/, "");
+    keyWordArray = st.split("\n");
+    $('#catching').remove();
+    $('.tabBox').remove();
+    chrome.runtime.sendMessage({doKey: 'searchBegin', kWc: keyWordArray}, function (response) {
+        // timedMsg(response);
+        $('#searchButton .font_T').text('查询中(0/' + response + ')');
+        $('#searchButton .font_T').addClass('loadingIco');
+        $('#searchButton').removeClass('blueButtonHover');
+        $('#copyButton .font_T').text('停止');
+        $('#copyButton').addClass('redButton').removeClass('blueButtonHover');
+    });
+}
 
 function sendMessageToContentScript(message, callback) {
     chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
@@ -114,6 +132,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             $('#searchButton .font_T').text(request.catchWA);
             $('#searchButton .font_T').addClass('loadingIco');
             $('#searchButton').removeClass('blueButtonHover');
+            $('#copyButton .font_T').text('停止');
+            $('#copyButton').addClass('redButton').removeClass('blueButtonHover');
             break;
         case "SearchState_off":
             $('#searchButton .font_T').text('查询');

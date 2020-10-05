@@ -5,6 +5,7 @@ let search_i = 0;
 let reKeyWord = '';
 let timerSearch;
 let searching = false;
+let myTab;
 for (let i = 0; i < 100; i++) {
     catchWordArray[i] = [];
     for (let j = 0; j <= 2; j++) {
