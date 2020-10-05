@@ -1,14 +1,13 @@
 let refreshKey = true;
-
-
 let timerSearch;
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     switch (request.doKey) {
         case "addNewSearch":
             console.log("收到后台addNewSearch命令");
             timerSearch = setInterval(function () {
-                if ($('#queryString').val() != request.keyContent) {
-                    $('#queryString').val(request.keyContent);
+                let $qg = $('#queryString');
+                if ($qg.val() !== request.keyContent) {
+                    $qg.val(request.keyContent);
                     console.log(("request.keyContent=" + request.keyContent));
                     console.log("循环中" + $('#queryString').val());
                 } else {
@@ -41,14 +40,14 @@ function catchContent(keyWordArray) {
     cat_ii++;
     console.log('textBox=' + textBox);
     console.log('keyWordArray=' + keyWordArray);
-    if (textBox == keyWordArray) {
-        if ($('#rank-searech-table td:nth-child(1)').eq(0).text() == '无匹配结果') {
+    if (textBox === keyWordArray) {
+        if ($('#rank-searech-table td:nth-child(1)').eq(0).text() === '无匹配结果') {
             chrome.runtime.sendMessage({
                 doKey: 'catchNull',
                 keyWord: $('#queryString').val()
             }, function (response) {
                 console.log('response=' + response);
-                if (response == 'bg_gotData') {
+                if (response === 'bg_gotData') {
                     chrome.runtime.sendMessage({
                         doKey: 'goNext'
                     });
@@ -70,7 +69,7 @@ function catchContent(keyWordArray) {
                     keyWhich: key_which
                 }, function (response) {
                     console.log('response=' + response);
-                    if (response == 'bg_gotData') {
+                    if (response === 'bg_gotData') {
                         chrome.runtime.sendMessage({doKey: 'goNext',});
                         console.log("bg 收到 cs 数据");
                     }

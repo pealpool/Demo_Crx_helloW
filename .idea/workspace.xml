@@ -11,8 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85be8931-1b77-4330-97e7-038c23f64116" name="默认的" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Demo_Crx_helloW.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Demo_Crx_helloW.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/background.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/content-script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/content-script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/popup.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +53,6 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../chrome-plugin-demo-master/full-chrome-plugin-demo" />
@@ -103,7 +105,7 @@
       <workItem from="1601730555242" duration="12005000" />
       <workItem from="1601781934588" duration="9349000" />
       <workItem from="1601866306267" duration="33000" />
-      <workItem from="1601866354849" duration="19775000" />
+      <workItem from="1601866354849" duration="25876000" />
     </task>
     <servers />
   </component>
@@ -150,10 +152,10 @@
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1601716961461" />
     <state x="1326" y="369" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1600096342224" />
     <state x="1326" y="372" key="FileChooserDialogImpl/0.0.3440.1410@0.0.3440.1410" timestamp="1600137994259" />
-    <state x="448" y="185" key="SettingsEditor" timestamp="1601896114222">
+    <state x="448" y="185" key="SettingsEditor" timestamp="1601900135107">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="448" y="185" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1601896114222" />
+    <state x="448" y="185" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1601900135107" />
     <state x="2027" y="538" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1600092349683" />
     <state x="2027" y="542" key="SettingsEditor/0.0.3440.1410@0.0.3440.1410" timestamp="1600412580422" />
     <state x="2165" y="474" key="refactoring.ChangeSignatureDialog" timestamp="1600222303868">

@@ -13,12 +13,12 @@ chrome.runtime.sendMessage({doKey: 'loadResult'}, function (response) {
     $('#myResultBox').html(response);
 });
 
-$('#myKeyWord').change(function () {
+$('#myKeyWord').on('change',function () {
     let v_after = $(this).val();
     chrome.storage.local.set({word_text: v_after});
 });
 
-$('#copyButton').click(function () {
+$('#copyButton').on('click',function () {
     if ($(this).attr('class') === 'blueButtonHover') {
         chrome.runtime.sendMessage({doKey: 'OutputCopy'}, function (response) {
             if (response) {
@@ -35,7 +35,7 @@ $('#copyButton').click(function () {
     }
 });
 
-$('#searchButton').click(function () {
+$('#searchButton').on('click',function () {
     // chrome.storage.local.get({word_text: '无数据'}, function(items) {
     //     $('#ddd').append('<div>提取：' + items.word_text + '</div>');
     // });
@@ -85,11 +85,18 @@ function searchClick() {
 //     });
 // }
 
-$('#myResultBox').hover(function () {
-    $('#myConsoleBox').css('opacity', 0.1);
-}, function () {
-    $('#myConsoleBox').css('opacity', 1);
+
+
+$("#myResultBox").on({
+    mouseover: function () {
+        $('#myConsoleBox').css('opacity', 0.1);
+        $("#myKeyWord").switchClass("myKeyWord02", "myKeyWord01", 100);
+    },
+    mouseout: function () {
+        $('#myConsoleBox').css('opacity', 1);
+    }
 });
+
 
 
 function timedMsg(myText) {
@@ -102,7 +109,7 @@ function timedMsg(myText) {
     }, 10000);
 }
 
-$('#logoName_T .smallFont').click(function () {
+$('#logoName_T .smallFont').on('click',function () {
     timedMsg('检查是否有更新可用...');
     setTimeout(function () {
         timedMsg('试用版：不能自动升级。');
@@ -146,13 +153,19 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     }
 });
 
-$('#myKeyWord').hover(function () {
-    $("#myKeyWord").switchClass("myKeyWord01", "myKeyWord02", 100);
+$('#myKeyWord').on({
+    mouseover: function () {
+        $("#myKeyWord").switchClass("myKeyWord01", "myKeyWord02", 100);
+    }
 });
 
-$('#myResultBox').hover(function () {
-    $("#myKeyWord").switchClass("myKeyWord02", "myKeyWord01", 100);
-});
+
+
+// $('#myResultBox').on({
+//     mouseover: function () {
+//         $("#myKeyWord").switchClass("myKeyWord02", "myKeyWord01", 100);
+//     }
+// });
 
 function drawResult(a0, a1, a2) {
     $('#myResultBox').append('<div class="tabBox"><div class="tabD0">' + a0 + '</div>' + '<div class="tabD1">' + a1 + '</div>' + '<div class="tabD2">' + a2 + '</div></div>');

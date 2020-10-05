@@ -22,7 +22,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     // }
     switch (message.doKey) {
         case "loadResult":
-            if ($('#myResultBox').html() == '') {
+            if ($('#myResultBox').html() === '') {
                 sendResponse('<div id="catching">待获取数据...</div>');
             } else {
                 sendResponse($('#myResultBox').html());
@@ -46,7 +46,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
             beginActiveSearch();
             break;
         case "catch":
-            if (message.keyWord == keyWordArray[search_i]) {
+            if (message.keyWord === keyWordArray[search_i]) {
                 catchWordArray[search_i][0] = keyWordArray[search_i];
                 catchWordArray[search_i][1] = message.keyRanking;
                 catchWordArray[search_i][2] = message.keyWhich;
@@ -58,7 +58,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
             }
             break;
         case "catchNull":
-            if (message.keyWord == keyWordArray[search_i]) {
+            if (message.keyWord === keyWordArray[search_i]) {
                 catchWordArray[search_i][0] = keyWordArray[search_i];
                 catchWordArray[search_i][1] = "前20页无产品";
                 catchWordArray[search_i][2] = "";
@@ -91,17 +91,19 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
             if (!searching) {
                 let ti = 0;
                 $('#myTable').empty();
-                while ((catchWordArray[ti][0] != '') && (ti < keyWordArrayLength)) {
+                while ((catchWordArray[ti][0] !== '') && (ti < keyWordArrayLength)) {
                     drawTable(catchWordArray[ti][0], catchWordArray[ti][1], catchWordArray[ti][2]);
                     ti++;
                 }
                 let inp = $('input');
                 inp.val(document.getElementById("myTable").outerHTML);
-                if($('#myTable').html()==''){
+                if ($('#myTable').html() === '') {
                     sendResponse(false);
-                }else {
-                    inp.focus();
-                    inp.select();
+                } else {
+                    inp.trigger('focus');
+                    inp.trigger('select');
+                    // inp.focus();
+                    // inp.select();
                     document.execCommand('Copy');
                     sendResponse(true);
                 }
@@ -143,7 +145,7 @@ function addNewKeyWord() {
 function printResult() {
     let di = 0;
     $('.tabBox').remove();
-    while ((catchWordArray[di][0] != '') && (di < keyWordArrayLength)) {
+    while ((catchWordArray[di][0] !== '') && (di < keyWordArrayLength)) {
         drawResult(catchWordArray[di][0], catchWordArray[di][1], catchWordArray[di][2]);
         di++;
     }
@@ -162,7 +164,6 @@ function refreshSearchState() {
         let a = '查询中(' + (search_i + 1) + '/' + keyWordArrayLength + ')';
         chrome.runtime.sendMessage({doKey: 'SearchState_on', catchWA: a});
     } else {
-        ;
         chrome.runtime.sendMessage({doKey: 'SearchState_off'});
     }
 }
