@@ -43,8 +43,8 @@ $('#searchButton').on('click',function () {
         let activeUrl;
         chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
             activeUrl = tabs[0].url;
-            let exp1 = /^(https:\/\/hz-productposting\.alibaba\.com\/product\/ranksearch\/rankSearch\.htm)/;
-            let exp2 = /^(https:\/\/passport\.alibaba\.com\/icbu_login\.htm)/;
+            let exp1 = new RegExp("^(https:\/\/hz-productposting\.alibaba\.com\/product\/ranksearch\/rankSearch\.htm)");
+            let exp2 = new RegExp("^(https:\/\/passport\.alibaba\.com\/icbu_login\.htm)");
             if (exp1.test(activeUrl)) {
                 searchClick();
             } else if (exp2.test(activeUrl)) {
@@ -71,7 +71,7 @@ function searchClick() {
         // timedMsg(response);
         $('#searchButton .font_T').text('查询中(0/' + response + ')').addClass('loadingIco');
         // $('#searchButton .font_T').addClass('loadingIco');
-        $('#searchButton').removeClass('blueButtonHover');
+        $('#searchButton').removeClass('blueButtonHover').addClass('blueBackgroundLoading');
         $('#copyButton .font_T').text('停止');
         $('#copyButton').addClass('redButton').removeClass('blueButtonHover');
     });
@@ -139,14 +139,14 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         case "SearchState_on":
             $('#searchButton .font_T').text(request.catchWA).addClass('loadingIco');
             // $('#searchButton .font_T').addClass('loadingIco');
-            $('#searchButton').removeClass('blueButtonHover');
+            $('#searchButton').removeClass('blueButtonHover').addClass('blueBackgroundLoading');
             $('#copyButton .font_T').text('停止');
             $('#copyButton').addClass('redButton').removeClass('blueButtonHover');
             break;
         case "SearchState_off":
             $('#searchButton .font_T').text('查询').removeClass('loadingIco');
             // $('#searchButton .font_T').removeClass('loadingIco');
-            $('#searchButton').addClass('blueButtonHover');
+            $('#searchButton').removeClass('blueBackgroundLoading').addClass('blueButtonHover');
             $('#copyButton .font_T').text('导出');
             $('#copyButton').removeClass('redButton').addClass('blueButtonHover');
             break;

@@ -262,3 +262,54 @@ body {
         transform: rotatez(360deg);
     }
 }
+
+
+
+.blueBackgroundLoading > .font_B {
+    color: rgba(255, 255, 255, 0);
+    background: repeating-linear-gradient(45deg, #174C81 25%, #174C81 50%, #1f568d 50%, #1f568d 75%);
+    background-size: 100px 100px;
+    -webkit-background-clip: text;
+    -webkit-animation: stripeBackgroundPosition 2s linear infinite;
+    animation: stripeBackgroundPosition 2s linear infinite;
+}
+.blueBackgroundLoading{
+    background: repeating-linear-gradient(45deg, #1f568d 25%, #1f568d 50%, #174C81 50%, #174C81 75%);
+    background-size: 100px 100px;
+    -webkit-animation: stripeTransform 2s linear infinite;
+    animation: stripeTransform 2s linear infinite;
+}
+
+@-webkit-keyframes stripeTransform {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: calc(100px * -1) 0;
+    }
+}
+
+@keyframes stripeTransform {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: calc(100px * -1) 0;
+    }
+}
+@-webkit-keyframes stripeBackgroundPosition {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: calc(100px * -1) 0;
+    }
+}
+@keyframes stripeBackgroundPosition {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: calc(100px * -1) 0;
+    }
+}
