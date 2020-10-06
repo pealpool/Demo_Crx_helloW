@@ -1,3 +1,4 @@
+new ClipboardJS('.btn');
 let keyWordArray = [];
 let catchWordArray = [];
 let keyWordArrayLength = 0;
@@ -101,16 +102,10 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
                     drawTable(catchWordArray[ti][0], catchWordArray[ti][1], catchWordArray[ti][2]);
                     ti++;
                 }
-                let inp = $('input');
-                inp.val(document.getElementById("myTable").outerHTML);
                 if ($('#myTable').html() === '') {
                     sendResponse(false);
                 } else {
-                    inp.trigger('focus');
-                    inp.trigger('select');
-                    // inp.focus();
-                    // inp.select();
-                    document.execCommand('Copy');
+                    $('.btn').trigger('click');
                     sendResponse(true);
                 }
             }
