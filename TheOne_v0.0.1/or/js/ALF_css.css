@@ -1,0 +1,315 @@
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.2);
+}
+*::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: rgba(0,0,0,0.1);
+
+}
+*::selection {
+    background-color: #6ed4ff;
+}
+
+
+body {
+    margin: 0;
+    width: 401px;
+    height: 500px;
+    font-size: 12px;
+    font-family: "微软雅黑";
+}
+
+#topBox{
+    background-color: #174C81;
+    width: auto;
+    height: 40px;
+    overflow:hidden;
+    user-select:none;
+}
+#logo{
+    float: right;
+    margin-top: -35px;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    background-image: url("../images/logoTO_W.png");
+    background-size: cover;
+}
+#logoName_T{
+    float: right;
+    font-size: 16px;
+    /*font-weight: bold;*/
+    color:#fff;
+    height: 40px;
+    margin-right: 45px;
+    margin-top: -26px;
+    cursor: default;
+}
+#logoName_B{
+    float: left;
+    text-align: left;
+    font-size: 66px;
+    font-weight: bold;
+    color:#1f568d;
+    width: 1000px;
+    height: 40px;
+    margin-left: 80px;
+    line-height: 40px;
+    cursor: default;
+    overflow:hidden;
+}
+#bigBox{
+    float: left;
+    width: 401px;
+    height: 400px;
+    background-color: #f5f5f5;
+    /*overflow:hidden;*/
+}
+.vLine{
+    float: left;
+    width: 1px;
+    height: 400px;
+    background-color: #ccc;
+}
+
+#myKeyWord {
+    box-sizing: border-box;
+    float: left;
+    height: 400px;
+    padding: 10px;
+    resize: none;
+    border: none;
+    background-color: #f5f5f5;
+    font-family: 微软雅黑;
+    font-size: 12px;
+}
+#myKeyWord:hover{
+    background-color: #fff;
+}
+.myKeyWord01{
+    width: 50px;
+}
+.myKeyWord02{
+    width: 204px;
+}
+
+#myResultBox{
+    box-sizing: border-box;
+    /*float: left;*/
+    /*width: 196px;*/
+    height: 400px;
+    padding-top:11px;
+    padding-left: 10px;
+    font-size: 12px;
+    overflow:hidden;
+}
+#myResultBox:hover{
+    background-color: #fff;
+}
+#searchButton{
+    float: left;
+    width: 341px;
+    height: 60px;
+    line-height: 60px;
+    cursor: pointer;
+    color:#fff;
+    font-size: 66px;
+    text-align: center;
+    overflow:hidden;
+    user-select:none;
+    background-color: #174C81;
+}
+.blueButtonHover:hover{
+    background-color: #3987d0!important;
+}
+.blueButtonHover:active{
+    background-color: #174C81!important;
+}
+#copyButton{
+    float: left;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    cursor: pointer;
+    color:#fff;
+    font-size: 66px;
+    text-align: center;
+    overflow:hidden;
+    user-select:none;
+    background-color: #174C81;
+}
+.redButton{
+    background-color: #d63333!important;
+}
+.redButton:hover{
+    background-color: #ff3434!important;
+}
+.redButton:active{
+    background-color: #d63333!important;
+}
+.redButton > .font_B{
+    color: #f17171!important;
+}
+.font_T{
+    width: auto;
+    height: 60px;
+    margin-top: -60px;
+    line-height: 60px;
+    color:#fff;
+    font-size: 16px;
+    text-align: center;
+}
+.font_B{
+    width: auto;
+    height: 60px;
+    font-size: 100px;
+    font-weight: bold;
+    text-align: center;
+    overflow:hidden;
+    color: #1f568d;
+}
+
+.smallFont{
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+}
+
+#myConsoleBox{
+    position: absolute;
+    top: 40px;
+    left: 205px;
+    box-sizing: border-box;
+    width: 196px;
+    height: 400px;
+    padding: 5px;
+    overflow:hidden;
+    user-select:none;
+    pointer-events: none;
+    display: flex;
+    flex-direction:column-reverse;
+}
+.myConsole{
+    width: 182px;
+    height: 14px;
+    font-size: 10px;
+    text-align: right;
+}
+.myConsole span{
+    background-color: rgba(189, 215, 231,0.5);
+}
+
+#catching{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.tabBox{
+    height: 15px;
+    width: 330px;
+    margin-bottom: 1px;
+    font-size: 12px;
+    overflow:hidden;
+}
+.tabBox div{
+    height:100%;
+    line-height: 14px;
+    padding-left: 5px;
+    background-color: #f5f5f5;
+}
+.tabD0{
+    float: left;
+    width: 165px;
+}
+.tabD1{
+    float: left;
+    width: 95px;
+    margin-left: 1px;
+}
+.tabD2{
+    float: left;
+    width: 53px;
+    margin-left: 1px;
+}
+
+.loadingIco:after {
+    content: '';
+    display: inline-block;
+    width: 0.8em;
+    height: 0.8em;
+    margin-left: 0.5em;
+    color: #ffffff;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    vertical-align: -5%;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 0% 30%);
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotatez(0deg);
+    }
+
+    to {
+        transform: rotatez(360deg);
+    }
+}
+
+
+
+.blueBackgroundLoading > .font_B {
+    color: rgba(255, 255, 255, 0);
+    background: repeating-linear-gradient(45deg, #174C81 25%, #174C81 50%, #1f568d 50%, #1f568d 75%);
+    background-size: 100px 100px;
+    -webkit-background-clip: text;
+    -webkit-animation: stripeBackgroundPosition 2s linear infinite;
+    animation: stripeBackgroundPosition 2s linear infinite;
+}
+.blueBackgroundLoading{
+    background: repeating-linear-gradient(45deg, #1f568d 25%, #1f568d 50%, #174C81 50%, #174C81 75%);
+    background-size: 100px 100px;
+    -webkit-animation: stripeTransform 2s linear infinite;
+    animation: stripeTransform 2s linear infinite;
+}
+
+@-webkit-keyframes stripeTransform {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: calc(100px * -1) 0;
+    }
+}
+
+@keyframes stripeTransform {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: calc(100px * -1) 0;
+    }
+}
+@-webkit-keyframes stripeBackgroundPosition {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: calc(100px * -1) 0;
+    }
+}
+@keyframes stripeBackgroundPosition {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: calc(100px * -1) 0;
+    }
+}

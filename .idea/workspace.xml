@@ -54,7 +54,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../chrome-plugin-demo-master/full-chrome-plugin-demo" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
+    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -107,6 +107,13 @@
       <workItem from="1601983373635" duration="8534000" />
       <workItem from="1602007138878" duration="76000" />
       <workItem from="1602058993175" duration="8107000" />
+      <workItem from="1602073678561" duration="973000" />
+      <workItem from="1602074996857" duration="390000" />
+      <workItem from="1602075401686" duration="315000" />
+      <workItem from="1602075801579" duration="500000" />
+      <workItem from="1602076961288" duration="46000" />
+      <workItem from="1602077386017" duration="219000" />
+      <workItem from="1602077769122" duration="6000" />
     </task>
     <servers />
   </component>
@@ -138,10 +145,10 @@
     </state>
     <state x="732" y="253" key="#Plugins/0.0.1920.1040@0.0.1920.1040" timestamp="1600436784636" />
     <state x="1312" y="341" key="#Plugins/0.0.3440.1400@0.0.3440.1400" timestamp="1600090335658" />
-    <state x="690" y="299" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper" timestamp="1601973315154">
+    <state x="690" y="299" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper" timestamp="1602075119719">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="299" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper/0.0.1920.1040@0.0.1920.1040" timestamp="1601973315154" />
+    <state x="690" y="299" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper/0.0.1920.1040@0.0.1920.1040" timestamp="1602075119719" />
     <state x="1126" y="323" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1600584939634">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -157,10 +164,10 @@
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1601716961461" />
     <state x="1326" y="369" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1600096342224" />
     <state x="1326" y="372" key="FileChooserDialogImpl/0.0.3440.1410@0.0.3440.1410" timestamp="1600137994259" />
-    <state x="625" y="179" key="SettingsEditor" timestamp="1602059634991">
+    <state x="625" y="179" key="SettingsEditor" timestamp="1602075246385">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="625" y="179" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602059634991" />
+    <state x="625" y="179" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602075246385" />
     <state x="2027" y="538" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1600092349683" />
     <state x="2027" y="542" key="SettingsEditor/0.0.3440.1410@0.0.3440.1410" timestamp="1600412580422" />
     <state x="2165" y="474" key="refactoring.ChangeSignatureDialog" timestamp="1600222303868">

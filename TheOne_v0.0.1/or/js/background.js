@@ -16,12 +16,6 @@ for (let i = 0; i < 100; i++) {
 }
 
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-    // if (message.doKey == 'keyWordChange') {
-    //     chrome.storage.local.set({word_text: message.keyWordText}, function () {
-    //
-    //         sendResponse('saved: ' + message.keyWordText);
-    //     });
-    // }
     switch (message.doKey) {
         case "loadResult":
             if ($('#myResultBox').html() === '') {
@@ -53,7 +47,6 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
                 catchWordArray[search_i][0] = keyWordArray[search_i];
                 catchWordArray[search_i][1] = message.keyRanking;
                 catchWordArray[search_i][2] = message.keyWhich;
-                // let a = '查询中(' + (search_i + 1) + '/' + keyWordArray.length + ')';
                 chrome.runtime.sendMessage({doKey: 'bTp_catchData', catchWA: catchWordArray, le: search_i});
                 refreshSearchState();
                 sendResponse('bg_gotData');
@@ -65,7 +58,6 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
                 catchWordArray[search_i][0] = keyWordArray[search_i];
                 catchWordArray[search_i][1] = "前20页无产品";
                 catchWordArray[search_i][2] = "";
-                // let a = '查询中(' + (search_i + 1) + '/' + keyWordArray.length + ')';
                 chrome.runtime.sendMessage({doKey: 'bTp_catchData', catchWA: catchWordArray, le: search_i});
                 refreshSearchState();
                 sendResponse('bg_gotData');
@@ -90,7 +82,6 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
                     title: 'The One 运营助手',
                     message: '查询完成!',
                     requireInteraction: true
-                    // imageUrl: 'img/sds.png'
                 });
             }
             break;
@@ -122,25 +113,14 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     }
 });
 
-// function sendMessageToContentScript(message, callback) {
-//     chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-//         chrome.tabs.sendMessage(tabs[0].id, message, function (response) {
-//             if (callback) callback(response);
-//         });
-//     });
-// }
-
-
 function beginActiveSearch() {
     timerSearch = setInterval(function () {
-        // sendMessageToContentScript({doKey: 'searchCheck', keyContent: keyWordArray[search_i]});
         chrome.tabs.sendMessage(myTab.id, {doKey: 'searchCheck', keyContent: keyWordArray[search_i]});
     }, 1000);
 }
 
 
 function addNewKeyWord() {
-    // sendMessageToContentScript({doKey: 'addNewSearch', keyContent: keyWordArray[search_i]});
     chrome.tabs.sendMessage(myTab.id, {doKey: 'addNewSearch', keyContent: keyWordArray[search_i]});
 }
 
