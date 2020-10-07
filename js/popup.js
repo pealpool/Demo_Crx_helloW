@@ -2,7 +2,7 @@ let catchWordArray = [];
 catchWordArray[0] = [];
 
 
-chrome.storage.local.get({word_text: '无数据'}, function (items) {
+chrome.storage.local.get({word_text: 'No data'}, function (items) {
     $('#myKeyWord').val(items.word_text);
 });
 // chrome.storage.local.get({divResult: ''}, function (items) {
@@ -13,12 +13,12 @@ chrome.runtime.sendMessage({doKey: 'loadResult'}, function (response) {
     $('#myResultBox').html(response);
 });
 
-$('#myKeyWord').on('change',function () {
+$('#myKeyWord').on('change', function () {
     let v_after = $(this).val();
     chrome.storage.local.set({word_text: v_after});
 });
 
-$('#copyButton').on('click',function () {
+$('#copyButton').on('click', function () {
     if ($(this).attr('class') === 'blueButtonHover') {
         chrome.runtime.sendMessage({doKey: 'OutputCopy'}, function (response) {
             if (response) {
@@ -35,26 +35,38 @@ $('#copyButton').on('click',function () {
     }
 });
 
-$('#searchButton').on('click',function () {
+$('#searchButton').on('click', function () {
     // chrome.storage.local.get({word_text: '无数据'}, function(items) {
     //     $('#ddd').append('<div>提取：' + items.word_text + '</div>');
     // });
-    if ($(this).attr('class') === 'blueButtonHover') {
-        let activeUrl;
-        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-            activeUrl = tabs[0].url;
-            let exp1 = new RegExp("^(https:\/\/hz-productposting\.alibaba\.com\/product\/ranksearch\/rankSearch\.htm)");
-            let exp2 = new RegExp("^(https:\/\/passport\.alibaba\.com\/icbu_login\.htm)");
-            if (exp1.test(activeUrl)) {
-                searchClick();
-            } else if (exp2.test(activeUrl)) {
-                timedMsg('请先登录后继续。');
-            } else {
-                timedMsg('正在打开查询网站');
-                chrome.tabs.create({url: 'https://hz-productposting.alibaba.com/product/ranksearch/rankSearch.htm'});
+    $.get("http://api.m.taobao.com/rest/api3.do?api=mtop.common.getTimestamp", function (data) {
+        let startDay = 1602061859000; //2020-10-07 17:10:59
+        let trialDay = 60;
+        let nowTime = data.data.t;
+        if (nowTime < (startDay + trialDay * 86400000)) {
+            if ($('#searchButton').attr('class') === 'blueButtonHover') {
+                let activeUrl;
+                chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+                    activeUrl = tabs[0].url;
+                    let exp1 = new RegExp("^(https:\/\/hz-productposting\.alibaba\.com\/product\/ranksearch\/rankSearch\.htm)");
+                    let exp2 = new RegExp("^(https:\/\/passport\.alibaba\.com\/icbu_login\.htm)");
+                    if (exp1.test(activeUrl)) {
+                        searchClick();
+                    } else if (exp2.test(activeUrl)) {
+                        timedMsg('请先登录后继续。');
+                    } else {
+                        timedMsg('正在打开查询网站');
+                        chrome.tabs.create({url: 'https://hz-productposting.alibaba.com/product/ranksearch/rankSearch.htm'});
+                    }
+                });
             }
-        });
-    }
+        } else {
+            timedMsg('版本已过期，');
+            setTimeout(function () {
+                timedMsg('请升级后再试。');
+            }, 2000);
+        }
+    });
 });
 
 
@@ -86,7 +98,6 @@ function searchClick() {
 // }
 
 
-
 $("#myResultBox").on({
     mouseover: function () {
         $('#myConsoleBox').css('opacity', 0.1);
@@ -96,7 +107,6 @@ $("#myResultBox").on({
         $('#myConsoleBox').css('opacity', 1);
     }
 });
-
 
 
 function timedMsg(myText) {
@@ -109,7 +119,7 @@ function timedMsg(myText) {
     }, 10000);
 }
 
-$('#logoName_T .smallFont').on('click',function () {
+$('#logoName_T .smallFont').on('click', function () {
     timedMsg('检查是否有更新可用...');
     setTimeout(function () {
         timedMsg('试用版：不能自动升级。');
@@ -159,14 +169,10 @@ $('#myKeyWord').on({
     }
 });
 
-
-
-// $('#myResultBox').on({
-//     mouseover: function () {
-//         $("#myKeyWord").switchClass("myKeyWord02", "myKeyWord01", 100);
-//     }
-// });
-
 function drawResult(a0, a1, a2) {
     $('#myResultBox').append('<div class="tabBox"><div class="tabD0">' + a0 + '</div>' + '<div class="tabD1">' + a1 + '</div>' + '<div class="tabD2">' + a2 + '</div></div>');
 }
+
+
+
+

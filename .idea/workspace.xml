@@ -54,7 +54,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../chrome-plugin-demo-master/full-chrome-plugin-demo" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -106,6 +106,7 @@
       <workItem from="1601972457892" duration="3190000" />
       <workItem from="1601983373635" duration="8534000" />
       <workItem from="1602007138878" duration="76000" />
+      <workItem from="1602058993175" duration="8107000" />
     </task>
     <servers />
   </component>
@@ -156,10 +157,10 @@
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1601716961461" />
     <state x="1326" y="369" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1600096342224" />
     <state x="1326" y="372" key="FileChooserDialogImpl/0.0.3440.1410@0.0.3440.1410" timestamp="1600137994259" />
-    <state x="448" y="185" key="SettingsEditor" timestamp="1601974194916">
+    <state x="625" y="179" key="SettingsEditor" timestamp="1602059634991">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="448" y="185" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1601974194916" />
+    <state x="625" y="179" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602059634991" />
     <state x="2027" y="538" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1600092349683" />
     <state x="2027" y="542" key="SettingsEditor/0.0.3440.1410@0.0.3440.1410" timestamp="1600412580422" />
     <state x="2165" y="474" key="refactoring.ChangeSignatureDialog" timestamp="1600222303868">
