@@ -176,3 +176,5 @@ function drawResult(a0, a1, a2) {
 
 
 
+//todo 图片转成Base64，直接输出 首页设计稿html
+// https://www.jsjiami.com/article/js-download-img.html
