@@ -37,9 +37,6 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectId" id="1hS4P6oXjwOv67AiNHuqJs5goCe" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="新增" />
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -51,7 +48,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../chrome-plugin-demo-master/full-chrome-plugin-demo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
@@ -116,6 +119,9 @@
       <workItem from="1602077769122" duration="6000" />
       <workItem from="1602078217107" duration="12000" />
       <workItem from="1602078248579" duration="117000" />
+      <workItem from="1602124817008" duration="70000" />
+      <workItem from="1602124902566" duration="474000" />
+      <workItem from="1602125455095" duration="4648000" />
     </task>
     <servers />
   </component>
@@ -166,10 +172,10 @@
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1601716961461" />
     <state x="1326" y="369" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1600096342224" />
     <state x="1326" y="372" key="FileChooserDialogImpl/0.0.3440.1410@0.0.3440.1410" timestamp="1600137994259" />
-    <state x="625" y="179" key="SettingsEditor" timestamp="1602075246385">
+    <state x="625" y="179" key="SettingsEditor" timestamp="1602125364354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="625" y="179" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602075246385" />
+    <state x="625" y="179" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602125364354" />
     <state x="2027" y="538" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1600092349683" />
     <state x="2027" y="542" key="SettingsEditor/0.0.3440.1410@0.0.3440.1410" timestamp="1600412580422" />
     <state x="2165" y="474" key="refactoring.ChangeSignatureDialog" timestamp="1600222303868">
