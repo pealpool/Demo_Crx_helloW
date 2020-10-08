@@ -20,7 +20,7 @@
 
 body {
     margin: 0;
-    width: 401px;
+    width: 451px;
     height: 500px;
     font-size: 12px;
     font-family: "微软雅黑";
@@ -177,7 +177,7 @@ body {
 }
 
 .smallFont{
-    font-size: 10px;
+    font-size: 12px;
     color: rgba(255,255,255,0.5);
     cursor: pointer;
 }
